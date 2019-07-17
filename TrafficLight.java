@@ -9,4 +9,28 @@
 public class TrafficLight{
 
 
-}
+    public enum BulbColor{
+        RED, YELLOW, GREEN
+    }
+
+    private BulbColor color;
+
+    public TrafficLight(){
+        setColor(RED);
+
+    }
+
+    public TrafficLight(BulbColor color){
+        setColor(color);
+    }
+
+
+    public BulbColor getColor(){
+        return color;
+
+    }
+    public void setColor(BulbColor color(){
+            this.Bulbcolor = color;
+            }
+
+            }

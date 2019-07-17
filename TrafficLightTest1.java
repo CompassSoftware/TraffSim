@@ -17,36 +17,40 @@ public class TrafficLightTest1{
             light1 = new TrafficLight(GREEN);
             light2 = new TrafficLight(YELLOW);
             light3 = new TrafficLight();
-            
+
 
         }
     @Test
-    public void test
+        public void testDefConst(){
+            assert light3.getColor() == RED;
+
+        }
+
+    @Test
+        public void testInit1(){
+            boolean b1, b2, b3;
+            b1 = light1.getColor() != light2.getColor();
+            b2 = light2.getColor() != light3.getColor();
+            b3 = light3.getColor() != light1.getColor();
+        }
+
+    @Test
+        public void testConst(){
+            boolean b1, b2;
+            b1 = light1.getColor() == GREEN;
+            b2 = light2.getColor() == YELLOW;
+            assert b1 && b2;
+        }
+
+    @Test
+        public void testSetter(){
+            light2.setColor(RED);
+            assert light2.getColor() == light3.getColor();
+        }
+
 
 }
 
 
 
 
-
-public class Calculator5Test {
-    Calculator calculator;
-    @BeforeEach
-
-        public void init(){
-            calculator = new Calculator();
-
-        }
-    @Test
-        public void testEvaluate2() {
-            int sum = calculator.evaluate("1+2+3");
-            assertEquals(6, sum);
-        }
-
-    @Test
-
-        public void testEvaluate() {
-            int sum = calculator.evaluate("3 + 4 + 5");
-            assertEquals(12, sum);
-        }
-}
