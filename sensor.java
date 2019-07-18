@@ -1,34 +1,22 @@
+/*
+ * Sensor class.
+ */
 public class sensor {
 
-    public boolean car;
-    public boolean pedestrian;
+    //Queue queue
+    boolean car;
 
-    public sensor() {
-        car = this.car;
-        pedestrian = this.pedestrian;
-    }
+    public sensor(Queue q) {
+        this.queue = q;
+   }
 
-    public boolean CarSensor(boolean is_present) {
-        if (!is_present) {
-            return false;
-        }
-        return true;
-    }
+   public void carPresent() {
+       while (queue.isempty()) {
+            
+            }
+        car = true;
+   }
 
-    public boolean Pedestrian(boolean is_ped) {
-        if (!is_ped) {
-            return false;
-        }
-        return true;
-    }
-
-    public void setCar(boolean c) {
-        car = c;
-    }
-
-    public void setPed(boolean p) {
-        pedestrian = p;
-    }
 }
         
 
