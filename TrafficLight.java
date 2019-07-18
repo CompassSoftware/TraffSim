@@ -13,9 +13,9 @@ public class TrafficLight{
 
     private BulbColor color;
 
-    private LightBulb red;
-    private LightBulb yellow;
-    private LightBulb green;
+    private LightBulb red = new LightBulb();
+    private LightBulb yellow = new LightBulb();
+    private LightBulb green = new LightBulb();
 
     //Default Constructor
     public TrafficLight(){

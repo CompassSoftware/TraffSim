@@ -39,12 +39,14 @@ help:
 #etc.
 #Essential that command lines start with single TAB character
 
-compile: TrafficLight.java TrafficLightTest1.java $(JUNIT5_JAR)
-	javac -cp .:$(JUNIT5_JAR) TrafficLightTest1.java
+compile: TrafficLight.java LightBulb.java TrafficLightTest.java $(JUNIT5_JAR)
+	javac -cp .:$(JUNIT5_JAR) TrafficLightTest.java
 	javac TrafficLight.java
+	javac LightBulb.java
 
 clean:
 	rm -f *~
+	rm -f *.class
 
 test: $(JUNIT5_JAR)
 	java -cp .:$(JUNIT5_JAR) $(JUNIT5_RUNNER) --scan-class-path 
