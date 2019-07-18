@@ -6,17 +6,17 @@
  * on what controller commands.
  */
 
+enum BulbColor{
+    RED, YELLOW, GREEN
+}
+
+
 public class TrafficLight{
-
-
-    public enum BulbColor{
-        RED, YELLOW, GREEN
-    }
 
     private BulbColor color;
 
     public TrafficLight(){
-        setColor(RED);
+        setColor(BulbColor.RED);
 
     }
 
@@ -29,8 +29,8 @@ public class TrafficLight{
         return color;
 
     }
-    public void setColor(BulbColor color(){
-            this.Bulbcolor = color;
-            }
+    public void setColor(BulbColor color){
+        this.color = color;
+    }
 
-            }
+}
