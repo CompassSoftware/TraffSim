@@ -9,21 +9,21 @@ public class Car
     {
         motion = true;
         onSensor = false;
-        location = null;
+        location = "Eastbound";
     }
 
     public void stop()
     {
         setMotion(false);
         setSensor(true);
-        System.out.print("The car has stopped at the" + location + " intersection");
+        System.out.print("The car has stopped at the " + location + " intersection");
     }
 
     public void go()
     {
         setMotion(true);
         setSensor(false);
-        System.out.print("The car leaves the" + location  + "intersection");
+        System.out.print("The car leaves the " + location  + " intersection");
     }
 
     public boolean getMotion()
