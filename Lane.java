@@ -1,14 +1,14 @@
 public class Lane {
     
-    Light light;
+    TrafficLight light;
     sensor sense;
     boolean car;
-    Queue queue;
+    CarQueue queue;
 
     public Lane() {
-        light = new Light();
+        light = new TrafficLight();
         sense = new sensor();
-        //queue object
+        queue = new CarQueue();
     }
 
     public boolean carOnSensor() {
@@ -17,7 +17,7 @@ public class Lane {
     }
 
     public void addCar(Car car) {
-        queue.add(car);
+        queue.setQueue(car);
     }
 
     public void run() {
