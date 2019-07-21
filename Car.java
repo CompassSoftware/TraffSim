@@ -5,11 +5,11 @@ public class Car
     private String location;
 
     //might need to pass a Lane object for location.
-    public Car()
+    public Car(String loc)
     {
         motion = true;
         onSensor = false;
-        location = "Eastbound";
+        location = loc;
     }
 
     public void stop()
@@ -44,5 +44,10 @@ public class Car
     public void setSensor(boolean bool)
     {
         onSensor = bool;
+    }
+
+    public String getLoc()
+    {
+        return location;
     }
 }
