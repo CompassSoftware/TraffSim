@@ -3,7 +3,7 @@
  */
 public class sensor {
 
-    //Queue queue
+    CarQueue queue
     boolean car;
 
     public sensor(Queue q) {
