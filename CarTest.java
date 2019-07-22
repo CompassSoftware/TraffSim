@@ -14,7 +14,7 @@ public class CarTest
     public void init() 
     {
         original = System.out;
-        car = new Car();
+        car = new Car("eastbound");
         out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
     }
@@ -29,9 +29,8 @@ public class CarTest
     @Test
     public void testStop()
     {
-        //needs to be changed so that it takes the location and prints it.
         car.stop();
-        assertEquals("The car has stopped at the Eastbound intersection" ,out.toString());
+        assertEquals("The car has stopped at the " + car.getLoc() + " intersection" , out.toString());
     }
 
     @Test
@@ -65,10 +64,9 @@ public class CarTest
     @Test
     public void testGo()
     {
-        //change so it takes direction from location? or direction
         car.go();
         System.out.flush();
-        assertEquals("The car leaves the Eastbound intersection" ,out.toString());
+        assertEquals("The car leaves the " + car.getLoc() + " intersection" ,out.toString());
     }
 
 }
