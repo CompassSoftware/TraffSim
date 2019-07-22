@@ -42,4 +42,5 @@ public class Controller{
             System.out.println("\t" + l.printLight());
         }
     }
-               
+}
+           
