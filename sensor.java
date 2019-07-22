@@ -12,7 +12,7 @@ public class sensor {
     }
 
     public void carPresent() {
-        if (!Car.getSensor()) {
+        if (!car.getSensor()) {
             car = false;
         }
         car = true;
