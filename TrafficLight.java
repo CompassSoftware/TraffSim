@@ -28,14 +28,35 @@ public class TrafficLight{
     }
 
     //Getter
-    public BulbColor getColor(){
-        return color;
-
+    public char getColor(){
+        switch (color){ 
+            case RED:
+                return 'R';
+            case YELLOW:
+                return 'Y';
+            case GREEN:
+                return 'G';
+            default:
+                return 'N';
+        }
     }
 
     //Setter
-    public void setColor(BulbColor color){
-        this.color = color;
+    public void setColor(char color){
+        switch(color){
+            case 'G':
+            case 'g':
+                this.color = BulbColor.Green;
+                break;
+            case 'Y':
+            case 'y':
+                this.color = BulbColor.Yellow;
+                break;
+            case 'R':
+            case 'r':
+                this.color = BulbColor.Red;
+                break;
+        }
         changeLights();
     }
 
@@ -59,4 +80,18 @@ public class TrafficLight{
                         + "enum field in TrafficLight.java");
         }
     }
+
+    public String toString(){
+        switch (color){ 
+            case RED:
+                return "Red";
+            case YELLOW:
+                return "Yellow";
+            case GREEN:
+                return "Green";
+            default:
+                return "Not A Color";
+        }
+    }
+
 }

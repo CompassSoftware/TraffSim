@@ -4,11 +4,13 @@ public class Lane {
     sensor sense;
     boolean car;
     CarQueue queue;
+    char tag;
 
-    public Lane() {
+    public Lane(char tag) {
         light = new TrafficLight();
         sense = new sensor();
         queue = new CarQueue();
+        this.tag = tag;
     }
 
     public boolean carOnSensor() {
@@ -20,11 +22,19 @@ public class Lane {
         queue.setQueue(car);
     }
 
-    public void run() {
-        carOnSensor();
+    public void setLight(char color) {
+        light.setColor(color);
     }
 
-    public void tlight(BulbColor color) {
-        light.setColor(color);
+    public void getLight(){
+        light.getLight();
+    }
+
+    public void getTag(){
+        return tag;
+    }
+
+    public void printLight(){
+        light.toString();
     }
 }
