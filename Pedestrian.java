@@ -11,18 +11,18 @@ public class Pedestrian
         location = loc;
     }
     
-    public void stop ()
+    public void stop()
     {
         setMotion(false);
         setWait(true);
-        System.out.println("Pedestrian has stopped at the " + location  + " crosswalk");
+        System.out.print("Pedestrian has stopped at the " + location  + " crosswalk");
     }
 
     public void go()
     {
         setMotion(true);
         setWait(false);
-        System.out.println("Pedestrian crosses at  the " + location + " crosswalk");
+        System.out.print("Pedestrian crosses at the " + location + " crosswalk");
     }
     
     public boolean getMotion()
