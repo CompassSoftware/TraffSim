@@ -3,22 +3,19 @@
  */
 public class sensor {
 
-    CarQueue queue
+    CarQueue queue;
     boolean carOnSensor;
     Car car;
 
-    public sensor(Queue q) {
+    public sensor(CarQueue q) {
         this.queue = q;
         car = new Car();
     }
 
     public void carPresent() {
         if (!car.getSensor()) {
-            car = false;
+            carOnSensor = false;
         }
-        car = true;
+        carOnSensor = true;
     }
-
 }
-        
-
