@@ -1,6 +1,6 @@
 /* 
  * JUnit5 test class
- */
+ *
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -43,4 +43,4 @@ public class TrafficLightTest{
             assertEquals(light2.getColor(), light3.getColor());
         }
 }
-
+*/

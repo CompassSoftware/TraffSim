@@ -19,11 +19,11 @@ public class TrafficLight{
 
     //Default Constructor
     public TrafficLight(){
-        setColor(BulbColor.RED);
+        setColor('R');
     }
 
     //Specifc Constructor
-    public TrafficLight(BulbColor color){
+    public TrafficLight(char color){
         setColor(color);
     }
 
@@ -46,15 +46,15 @@ public class TrafficLight{
         switch(color){
             case 'G':
             case 'g':
-                this.color = BulbColor.Green;
+                this.color = BulbColor.GREEN;
                 break;
             case 'Y':
             case 'y':
-                this.color = BulbColor.Yellow;
+                this.color = BulbColor.YELLOW;
                 break;
             case 'R':
             case 'r':
-                this.color = BulbColor.Red;
+                this.color = BulbColor.RED;
                 break;
         }
         changeLights();

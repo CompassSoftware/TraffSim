@@ -9,7 +9,18 @@ import java.util.LinkedList;
 
 public class CarQueue{
     private Queue<Car> queue = new LinkedList<>();
+    
+    public Car peek(){
+        return queue.peek();
+    }
 
+    public void add(Car c){
+        queue.add(c);
+    }
+
+    public Car remove(){
+        return queue.remove();
+    }
 
     public Queue<Car> getQueue(){
 
