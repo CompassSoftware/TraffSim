@@ -10,12 +10,10 @@ STYLE_COMMAND = "-jar /usr/local/checkstyle-5.5/checkstyle-5.5-all.jar"
 STYLE_XML = style.xml
 
 
-compile: TrafficLight.java LightBulb.java TrafficLightTest.java Lane.java sensor.java sensorTest.java Car.java CarTest.java CarQueue.java Controller.java ControllerTest.java $(JUNIT5_JAR)
+compile: *.java $(JUNIT5_JAR)
 
-	javac -cp .:$(JUNIT5_JAR) TrafficLightTest.java CarTest.java sensorTest.java ControllerTest.java
-
-	javac TrafficLight.java LightBulb.java Lane.java Controller.java sensor.java Car.java CarQueue.java
-
+	javac -cp .:$(JUNIT5_JAR) *Test.java 
+	javac *.java
 clean:
 	rm -f *~
 	rm -f *.class
