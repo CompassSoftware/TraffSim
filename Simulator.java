@@ -14,6 +14,8 @@ public class Simulator{
         Car eastCar = new Car(lanes[3]); // Eastbound Lane
         lanes[3].queue.add(eastCar);
         Controller intersectControl = new Controller(lanes);
+        lanes[0].setLight('G');
+        lanes[2].setLight('G');
 
         while (lanes[0].queue.peek() != null || lanes[1].queue.peek() != null 
             || lanes[2].queue.peek() != null || lanes[3].queue.peek() != null){ // There is a car in a lane
