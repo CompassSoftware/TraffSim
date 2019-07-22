@@ -2,7 +2,7 @@ public class Pedestrian
 {
     private boolean motion;
     private boolean wait;
-    private string location;
+    private String location;
 
     public Pedestrian(String loc)
     {
@@ -47,6 +47,6 @@ public class Pedestrian
 
     public String getLocation()
     {
-        return locaiton;
+        return location;
     }
 }  
