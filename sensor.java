@@ -1,5 +1,6 @@
-
-
+/*
+ * Sensor class.
+ */
 public class sensor {
 
     CarQueue queue;
@@ -13,8 +14,8 @@ public class sensor {
 
     public void carPresent() {
         if (!car.getSensor()) {
-            car = false;
+            carOnSensor = false;
         }
-        car = true;
+        carOnSensor = true;
     }
 }
