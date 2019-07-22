@@ -1,4 +1,3 @@
-/*
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
 import java.io.ByteArrayOutputStream;
@@ -71,4 +70,3 @@ public class CarTest
     }
 
 }
-*/
