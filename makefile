@@ -10,11 +10,10 @@ STYLE_COMMAND = "-jar /usr/local/checkstyle-5.5/checkstyle-5.5-all.jar"
 STYLE_XML = style.xml
 
 
-compile: *.java 
-#$(JUNIT5_JAR)
-
-	#javac -cp .:$(JUNIT5_JAR) *Test.java 
+compile: *.java $(JUNIT5_JAR)
+	javac -cp .:$(JUNIT5_JAR) *Test.java 
 	javac *.java
+
 clean:
 	rm -f *~
 	rm -f *.class
