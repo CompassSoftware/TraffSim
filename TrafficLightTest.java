@@ -11,9 +11,9 @@ public class TrafficLightTest{
     TrafficLight light1, light2, light3;
     @BeforeEach
         public void init(){
-            light1 = new TrafficLight(BulbColor.GREEN);
-            light2 = new TrafficLight(BulbColor.YELLOW);
-            light3 = new TrafficLight();
+            light1 = new TrafficLight('G');
+            light2 = new TrafficLight('Y');
+            light3 = new TrafficLight('R');
 
 
         }
@@ -33,13 +33,13 @@ public class TrafficLightTest{
     @Test
         public void testConst(){
             boolean b1, b2;
-            b1 = light1.getColor() == BulbColor.GREEN;
-            b2 = light2.getColor() == BulbColor.YELLOW;
+            b1 = light1.getColor() == 'G';
+            b2 = light2.getColor() == 'Y';
             assertTrue(b1 && b2);
         }
     @Test
         public void testSetter(){
-            light2.setColor(BulbColor.RED);
+            light2.setColor('R');
             assertEquals(light2.getColor(), light3.getColor());
         }
 }
