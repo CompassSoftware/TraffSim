@@ -26,7 +26,7 @@ run:
 	make 
 	java Simulator
 
-customchk: sensor.java style.xml
-	java $(CKSTYLE_COMMAND) -c style.xml sensor.java
+customchk: *.java style.xml
+	java $(CKSTYLE_COMMAND) -c style.xml *.java
 
 
