@@ -2,15 +2,14 @@
  * TrafficLight.java
  *
  * Contains discrete states for different traffic light colors.
- * Sends this information to Controller and accelerates changes based 
- * on what controller commands.
+ * Sends this information to Controller and accelerates light 
+ * cycles based on what controller commands.
  */
 
 enum BulbColor{
     RED, YELLOW, GREEN
 }
 public class TrafficLight{
-
     private BulbColor color;
 
     private LightBulb red = new LightBulb();
@@ -22,7 +21,11 @@ public class TrafficLight{
         setColor('R');
     }
 
-    //Specifc Constructor
+    /*
+     * Specifc Constructor
+     * Uses one of three characters to easily access the enum
+     * and change the state of the light.
+     */
     public TrafficLight(char color){
         setColor(color);
     }
@@ -60,7 +63,10 @@ public class TrafficLight{
         changeLights();
     }
 
-    //Sets the different LightBulb booleans to on/off when the light status is changed
+    /* 
+     * Called after a light is changed; 
+     * updates all bulb objects to reflect the enum states.
+     */
     private void changeLights(){
         red.setState(false);
         green.setState(false);
@@ -81,6 +87,7 @@ public class TrafficLight{
         }
     }
 
+    //String dump for Controller/Simulator
     public String toString(){
         switch (color){ 
             case RED:

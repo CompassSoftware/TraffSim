@@ -9,9 +9,13 @@ import java.util.LinkedList;
 
 public class CarQueue{
     private Queue<Car> queue = new LinkedList<>();
-    
+
     public Car peek(){
         return queue.peek();
+    }
+
+    public Car poll(){
+        return queue.poll();
     }
 
     public void add(Car c){
