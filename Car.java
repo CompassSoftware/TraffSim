@@ -29,7 +29,6 @@ public class Car
             System.out.println("The " + lane.getTag() + " Sensor has been notified");
         }
     }
-
     /*
      *  Go orders the car to leave the intersection and tells where it goes.
      */
@@ -45,6 +44,8 @@ public class Car
 
     /*
      *  getTag returns the direction of the lane.
+     *
+     *  @return direction of lane car is in
      */
     public char getTag()
     {
@@ -53,12 +54,13 @@ public class Car
 
     /*
      *  getMotion returns true or false if car is in motion.
+     *
+     *  @return t/f
      */
     public boolean getMotion()
     {
         return motion;
     }
-
     /*
      *  setMotion is set to t/f depending if the car has stopped or gone.
      */
@@ -69,12 +71,13 @@ public class Car
 
     /*
      *  returns t/f depending if the car is on a sensor
+     *
+     *  @return t/f
      */
     public boolean getSensor()
     {
         return onSensor;
     }
-
     /*
      *  setSensor is used when a car approaches or leaves an intersection
      *
@@ -87,6 +90,8 @@ public class Car
 
     /*
      *  returns the lane object.
+     *
+     *  @return this car's Lane object
      */
     public Lane getLane()
     {
