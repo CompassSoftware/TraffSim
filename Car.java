@@ -45,6 +45,8 @@ public class Car
 
     /*
      *  getTag returns the direction of the lane.
+     *
+     *  @return direction of lane car is in
      */
     public char getTag()
     {
@@ -53,6 +55,8 @@ public class Car
 
     /*
      *  getMotion returns true or false if car is in motion.
+     *
+     *  @return t/f
      */
     public boolean getMotion()
     {
@@ -69,6 +73,8 @@ public class Car
 
     /*
      *  returns t/f depending if the car is on a sensor
+     *
+     *  @return t/f
      */
     public boolean getSensor()
     {
@@ -87,6 +93,8 @@ public class Car
 
     /*
      *  returns the lane object.
+     *
+     *  @return this car's Lane object
      */
     public Lane getLane()
     {

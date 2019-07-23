@@ -39,6 +39,8 @@ public class Pedestrian
     
     /*
      *  returns t/f if the pedestrian is in motion.
+     *
+     *  @return t/f
      */
     public boolean getMotion()
     {
@@ -57,6 +59,8 @@ public class Pedestrian
     
     /*
      *  returns t/f if Pedestrian is at crosswalk or not.
+     *
+     *  @return t/f if Ped. is waiting
      */
     public boolean getWait()
     {
@@ -75,6 +79,8 @@ public class Pedestrian
 
     /*
      *  returns a String that is the direction of the Pedestrian
+     *
+     *  @return String of direction
      */
     public String getLocation()
     {
