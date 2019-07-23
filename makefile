@@ -6,8 +6,8 @@
 
 JUNIT5_JAR = junit-platform-console-standalone-1.2.0.jar
 JUNIT5_RUNNER = org.junit.platform.console.ConsoleLauncher
-STYLE_COMMAND = "-jar /usr/local/checkstyle-5.5/checkstyle-5.5-all.jar"
-STYLE_XML = style.xml
+CKSTYLE_COMMAND = -jar /usr/local/checkstyle-5.5/checkstyle-5.5-all.jar
+CKSTIYLE_XML = cs_appstate_checks.xml
 
 
 compile: *.java 
@@ -26,3 +26,8 @@ run:
 	make clean
 	make 
 	java Simulator
+
+customchk: sensor.java style.xml
+	java $(CKSTYLE_COMMAND) -c style.xml sensor.java
+
+
