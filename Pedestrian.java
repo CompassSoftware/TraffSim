@@ -14,7 +14,7 @@ public class Pedestrian
         //may need a class for crosswalks
         motion = false;
         wait = true;
-        location = loc;
+        loc = loc;
     }
     
     /*
@@ -24,7 +24,7 @@ public class Pedestrian
     {
         setMotion(false);
         setWait(true);
-        System.out.print("Pedestrian has stopped at the " + location  + " crosswalk");
+        System.out.print("Pedestrian has stopped at the " + loc + " crosswalk");
     }
 
     /*
@@ -34,7 +34,7 @@ public class Pedestrian
     {
         setMotion(true);
         setWait(false);
-        System.out.print("Pedestrian crosses at the " + location + " crosswalk");
+        System.out.print("Pedestrian crosses at the " + loc + " crosswalk");
     }
     
     /*
@@ -84,6 +84,6 @@ public class Pedestrian
      */
     public String getLocation()
     {
-        return location;
+        return loc;
     }
 }  

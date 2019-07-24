@@ -1,26 +1,29 @@
-@author Hayden C.
-@version 1.0
-
+/**
+ *
+ * @author Hayden C.
+ * @version 1.0
+ *
+ */
 public class Lane {
     
-    private TrafficLight light;
-    private sensor sense;
-    private boolean car;
     public CarQueue queue;
+    private TrafficLight light;
+    private Sensor sense;
+    private boolean car;
     private char tag;
     private char oppLaneTag;
     
-    /**
-     * @param tag is a lane label that determines what direction we are working with.
-     * 
+    /** 
      * This contructor takes in a paramater for the lane tag and sets variables equal to the results of
      * prior methods.
+     *
+     * @param tag is a lane label that determines what direction we are working with.
      *
      */
     public Lane(char tag) {
         light = new TrafficLight();
         queue = new CarQueue();
-        sense = new sensor(queue);
+        sense = new Sensor(queue);
         this.tag = tag;
         setOppTag();
     }
