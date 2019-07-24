@@ -1,30 +1,40 @@
-/*
-//import org.junit.Assert.assertFalse;
+
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
-public class sensorTest {
+public class SensorTest {
    
-    sensor sense;
+    static Sensor sense;
+    static CarQueue q;
+    static Car car;
+    static Lane lane;
 
     @BeforeEach
     void init() {
-        sense = new sensor();
+        q = new CarQueue();
+        lane = new Lane('E');
+        car = new Car(lane);
+
     }
 
     @Test
     public void testCarSensor() {
         
-        assertTrue(sense.CarSensor(true));
+        q.add(car);
+        sense = new Sensor(q);
+        assertTrue(sense.getCarOnSensor());
 
     }
 
     @Test
-    public void testPedSensor() {
-        assertTrue(sense.Pedestrian(true));
+    public void testCarSensorFalse(){
+        sense = new Sensor(q);
+        assertFalse(sense.getCarOnSensor());
     }
 
+    
 
 }
-*/
+

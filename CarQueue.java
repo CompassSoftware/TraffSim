@@ -1,54 +1,57 @@
 import java.util.Queue;
 import java.util.LinkedList;
 
-/*
- * CarQueue.java
+/**
+ * CarQueue.java.
  *
  * FIFO ordering of cars in a given lane
+ * 
+ *  @author -
+ *  @version 1.0
  *
  */
-public class CarQueue{
+public class CarQueue {
     private Queue<Car> queue = new LinkedList<>();
 
-    /* 
-     * Does not change queue, returns first car
+    /**
+     * Does not change queue, returns first car.
      * @return      first car in queue
      */
-    public Car peek(){
+    public Car peek() {
         return queue.peek();
     }
 
     
-    /*
-     * Adds car to back of queue
-     * @param       car to add to queue
+    /**
+     * Adds car to back of queue.
+     * @param c to add to queue
      */
-    public void add(Car c){
+    public void add(Car c) {
         queue.add(c);
     }
 
-    /*
+    /**
      * Pops and returns first car in queue. Throws exception if empty
      * @return      first car in queue
      */
-    public Car remove(){
+    public Car remove() {
         return queue.remove();
     }
 
-    /*
-     * Class Getter
-     * @return      this queue
+    /**
+     * Queue Getter.
+     * @return this queue
      */
-    public Queue<Car> getQueue(){
+    public Queue<Car> getQueue() {
 
         return queue;
     }
 
-    /*
-     * Class Setter
+    /**
+     * Class Setter.
      * @param       queue to replace this queue
      */
-    public void setQueue(Queue<Car> queue){
+    public void setQueue(Queue<Car> queue) {
         this.queue = queue;
 
     }
