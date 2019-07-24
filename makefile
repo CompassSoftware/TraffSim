@@ -19,8 +19,8 @@ clean:
 	rm -f *~
 	rm -f *.class
 
-test: $(JUNIT5_JAR)
-	java -cp .:$(JUNIT5_JAR) $(JUNIT5_RUNNER) --scan-class-path 
+test: compile $(JUNIT5_JAR)
+	java -cp .:$(JUNIT5_JAR) $(JUNIT5_RUNNER) --scan-class-path
 
 run:
 	make clean
