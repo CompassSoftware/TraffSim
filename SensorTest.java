@@ -13,7 +13,7 @@ public class SensorTest {
     @BeforeEach
     void init() {
         q = new CarQueue();
-        car = new Car();
+        car = new Car(null);
 
     }
 

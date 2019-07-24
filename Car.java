@@ -1,7 +1,8 @@
 /**
  * 
+ * Car Class.
+ * 
  * @author James Brown
- *
  * @version 1.0
  *
  */

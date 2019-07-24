@@ -1,11 +1,20 @@
 
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.*;
+
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-public class CarTest
-{
+import org.junit.jupiter.api.*;
+
+/**
+ * 
+ * CarTest Class.
+ * 
+ * @author -
+ * @version 1.0
+ *
+ */
+public class CarTest {
 
     static Car car;
     static Lane lane;
@@ -13,8 +22,7 @@ public class CarTest
     PrintStream original;
 
     @BeforeEach
-    public void init() 
-    {
+    public void init() {
         original = System.out;
         lane = new Lane('E');
         lane.queue.add(new Car(lane));

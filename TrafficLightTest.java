@@ -5,6 +5,7 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
+
 import org.junit.jupiter.api.BeforeEach;
 
 public class TrafficLightTest{
@@ -19,7 +20,7 @@ public class TrafficLightTest{
         }
     @Test
         public void testDefConst(){
-            assertEquals(light3.getColor(), BulbColor.RED);
+            assertEquals(light3.getColor(), TrafficLight.BulbColor.RED);
 
         }
     @Test
