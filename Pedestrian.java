@@ -20,7 +20,7 @@ public class Pedestrian {
         //may need a class for crosswalks
         motion = false;
         wait = true;
-        loc = this.loc;
+        this.loc = loc;
     }
     
     /**

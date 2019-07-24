@@ -9,11 +9,13 @@ public class SensorTest {
     static Sensor sense;
     static CarQueue q;
     static Car car;
+    static Lane lane;
 
     @BeforeEach
     void init() {
         q = new CarQueue();
-        car = new Car(null);
+        lane = new Lane('E');
+        car = new Car(lane);
 
     }
 

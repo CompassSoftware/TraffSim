@@ -1,6 +1,7 @@
-/* 
+/** 
  * JUnit5 test class
- *
+ * 
+ */
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
@@ -10,12 +11,14 @@ public class ControllerTest {
      
       static Controller controller;
       static TrafficLight light;
-      Lane[] lanes;
+      static Lane[] lanes;
       
       @BeforeEach
       void makeController()
       {
-        controller = new Controller();
+        lanes = new Lane[1];
+        lanes[0] = new Lane('E');
+        controller = new Controller(lanes);
         light = new TrafficLight();
       }
 
@@ -37,4 +40,4 @@ public class ControllerTest {
          assertEquals(light.getColor(), YELLOW);
       }
 }
-*/
+

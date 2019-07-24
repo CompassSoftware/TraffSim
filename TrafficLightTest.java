@@ -20,7 +20,7 @@ public class TrafficLightTest{
         }
     @Test
         public void testDefConst(){
-            assertEquals(light3.getColor(), TrafficLight.BulbColor.RED);
+            assertEquals(light3.getColor(), 'R');
 
         }
     @Test
