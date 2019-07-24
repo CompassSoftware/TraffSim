@@ -11,7 +11,9 @@ import java.util.Arrays;
  * 07/21/2019
  */
 public class Controller{
- 
+    private static int MINTIME = 10;
+    private static int MAXTIME = 60;
+
     private Lane[] lanes;
     private int[] laneWithCar;
 
@@ -35,7 +37,7 @@ public class Controller{
      * @return an itn array of lanes with a car in them.
      */
     public int[] lanesWithCar(){
-       for (int i = 0; i < lanes.length; i++){
+        for (int i = 0; i < lanes.length; i++){
             if (lanes[i].carOnSensor()){ // if a car is on a sensor, add it to the set of lanes with with cars at light.
                 System.out.println("Controller notified that " + lanes[i].getTag() + " lane has a sensor that has been set off");
                 int j = 0;
@@ -46,7 +48,7 @@ public class Controller{
         }
         return laneWithCar;
     }
-    
+
     /*
      * A method to try to send cars on a specific lane by setting all
      * other lanes to red, then this lane to green.
@@ -59,23 +61,23 @@ public class Controller{
             for (Lane l : lanes)
                 if (l.getLight() == 'G'){
                     changed = true;
-                     l.setLight('Y');
+                    l.setLight('Y');
                 }
             if (changed){
                 System.out.println("Lights notified to change");
                 printLights(); 
             }
-            
+
             for (Lane l : lanes)
                 if (l.getLight() == 'Y') l.setLight('R');
             if (changed){
                 System.out.println("Lights notified to change");
-                 printLights();
+                printLights();
             }
 
             for (Lane l : lanes)
                 if (lanes[laneToSend].getTag() == l.getTag()
-                    || lanes[laneToSend].getOppTag() == l.getTag()) l.setLight('G');
+                        || lanes[laneToSend].getOppTag() == l.getTag()) l.setLight('G');
             System.out.println("Lights notified to change");
             printLights();
         }
@@ -91,4 +93,4 @@ public class Controller{
         System.out.println();
     }
 }
-               
+
