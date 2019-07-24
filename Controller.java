@@ -6,7 +6,7 @@ import java.util.Arrays;
  * information from the lane's sensor and computing sequence
  * to get all cars through intersection.
  * 
- * @author JEBro
+ * @author -
  * @version 1.0
  * 
  * 07/21/2019
