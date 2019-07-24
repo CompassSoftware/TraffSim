@@ -21,7 +21,7 @@ public class Controller {
      * Initializes lanes array to the one passed in and initialized laneWithCar
      * to a Null value
      *
-     * @param lanes set of lanes controller is associated to.
+     * @param lanes set of lanes controller is associated with.
      */
     public Controller(Lane[] lanes) {
         this.lanes = lanes;
