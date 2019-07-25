@@ -25,7 +25,7 @@ public class CarTest {
     public void init() {
         original = System.out;
         lane = new Lane('E');
-        lane.queue.add(new Car(lane));
+        lane.list.add(new Car(lane));
         car = new Car(lane);
         out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
