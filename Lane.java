@@ -1,35 +1,38 @@
-@author Hayden C.
-@version 1.0
-
+/**
+ *
+ * @author Hayden C.
+ * @version 1.0
+ *
+ */
 public class Lane {
     
-    private TrafficLight light;
-    private sensor sense;
-    private boolean car;
     public CarQueue queue;
+    private TrafficLight light;
+    private Sensor sense;
+    private boolean car;
     private char tag;
     private char oppLaneTag;
     
-    /**
-     * @param tag is a lane label that determines what direction we are working with.
-     * 
-     * This contructor takes in a paramater for the lane tag and sets variables equal to the results of
-     * prior methods.
+    /** 
+     * This contructor takes in a paramater for the 
+     * lane tag and sets variables equal to the results of prior methods.
+     *
+     * @param tag determines what direction we are working with.
      *
      */
     public Lane(char tag) {
         light = new TrafficLight();
         queue = new CarQueue();
-        sense = new sensor(queue);
+        sense = new Sensor(queue);
         this.tag = tag;
         setOppTag();
     }
 
      /**
-     * @return this method returns the car variable, which contains the information of whether or not there is a 
-     * car at the light.
      *
-     * This method gives the true or false response of whether or not there is a car present.
+     * This method T/F if there is a car present.
+     * 
+     * @return returns T/F if a car is on the sensor
      *
      */
     public boolean carOnSensor() {
@@ -40,7 +43,7 @@ public class Lane {
     /**
     * @param car which is a created object of the car class.
     *
-    * This method adds a car object to the que.
+    * This method adds a car object to the queue.
     *
     */
     public void addCar(Car car) {
@@ -48,17 +51,16 @@ public class Lane {
     }
 
     /**
-     * This method removes a car from the que.
+     * This method removes a car from the queue.
      *
      */
-    public void removeCar(){
+    public void removeCar() {
         queue.remove();
     }
     
     /**
-     * @param color contains the current color of the light. 
-     * 
      * This method changes the color of the light.
+     * @param color - new color for light 
      */
     public void setLight(char color) {
         light.setColor(color);
@@ -66,37 +68,40 @@ public class Lane {
     
     /**
      * This method gets the color of the light. 
+     * 
+     * @return returns first char of light color
      *
      */
-    public char getLight(){
+    public char getLight() {
         return light.getColor();
     }
     
     /**
-     * @return this method returns the tag.
-     *
      * This method gets the tag variable which contains the lane name.
-     *
+     * 
+     * @return this method returns the tag.
      */
-    public char getTag(){
+    public char getTag() {
         return tag;
     }
     
     /**
+     * Retrieves light color in string form.
+     * 
      * @return This method returns the light in string format.
-     *
      */
-    public String printLight(){
+    public String printLight() {
         return light.toString();
     }
     
     /**
-     * @param This method contains the variable tag, which contains the lane specification.
-     *
-     * this method switches the tag to the opposite direction ex. north to south etc.
-     *
+     * 
+     * this method switches the tag to the opposite direction 
+     * Ex: north to south etc.
+     *      
+     * @param tag sets tag to
      */
-    public void setTag(char tag){
+    public void setTag(char tag) {
         this.tag = tag;
         setOppTag();
     }
@@ -106,18 +111,27 @@ public class Lane {
      * @return this method returns the opposite Lane tag of the current lane.
      *
      */
-    public char getOppTag(){
+    public char getOppTag() {
         return oppLaneTag;
     }
     
     /**
-     * This lane creates different scenarios in which every instance of the opposite lane is created.
+     * This lane creates different scenarios in which 
+     * every instance of the opposite lane is created.
      */
-    public void setOppTag(){
-        if(tag == 'N') oppLaneTag = 'S';
-        else if(tag == 'S') oppLaneTag = 'N';
-        else if(tag == 'E') oppLaneTag = 'W';
-        else oppLaneTag = 'E'; 
+    public void setOppTag() {
+        if (tag == 'N') {
+            oppLaneTag = 'S';
+        }
+        else if (tag == 'S') {
+            oppLaneTag = 'N';
+        }
+        else if (tag == 'E') {
+            oppLaneTag = 'W';
+        }
+        else {
+            oppLaneTag = 'E'; 
+        }
     }
 
 }
