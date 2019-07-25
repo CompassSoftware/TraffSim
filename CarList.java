@@ -25,7 +25,8 @@ public class CarList {
     }
 
     /**
-     * Pops and returns first car in queue. Throws exception if empty
+     * Pops and returns first car in queue.
+     * Advance should usually be called afterward
      * @return      first car in queue
      */
     public Car remove() {
@@ -44,5 +45,15 @@ public class CarList {
 
     public void setList(ArrayList list) {
         this.list = list;
+    }
+
+    /*
+     * Moves every car in the list 1 closer to the head.
+     * NOTE: The head is overwritten, it must be handled beforehand
+     */
+    public void advance(){
+        for (int i = 0; i < list.size() - 1; i++){
+            list.set(i, list.get(i+1));
+        }
     }
 }
