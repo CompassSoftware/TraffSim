@@ -5,22 +5,22 @@
  */
 public class Sensor {
     
-    CarQueue queue;
+    CarList carList;
     boolean carOnSensor;
     
     /**
      * Class Constructor.
      * @param q queue object
      */
-    public Sensor(CarQueue q) {
-        this.queue = q;
+    public Sensor(CarList c) {
+        this.carList = c;
     }
     
     /**
      * carPresent method.
      */
     private void carPresent() {
-        if (queue.peek() == null) {
+        if (carList.peek() == null) { //change this peek() to match an arraylist method
             carOnSensor = false;
         }
         else {
