@@ -1,5 +1,7 @@
 /**
  * JUnit test class.
+ * @author Sam Howard
+ * @version 7/24/2019
  **/
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
