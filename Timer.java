@@ -1,32 +1,69 @@
 import java.util.Timer;
-import java.lang.Thread;
 
-public class Timer extends Thread
+public class Timer
 {
 
-   private int time;
-   private boolean sentinal;
+   private int interval;
+   private Timer timer;
 
-   public Timer(int s)
+   public Timer()
    {
-       this.time = s;
-       sentinal = false;
+       interval = 0;
+       timer = 0;
+   }
+
+   public int getTime()
+   {
+       return interval;
+   }
+
+   public void setTime(int interval)
+   {
+       this.inteval = newInterval;
    }
 
    public int start()
    {
 
-       try
-       {
-           Thread.sleep(time*1000);
-       }
-       catch(Exception e)
-       {
-           
-       }
+       timer = new Timer(30);
+       interval = 5;
 
-       sentinal = true;
+       if(//controller calls for timer;)
+       {
+            for(int i = 30; i!= 0;i--)
+            {
+           timer--;
+
+           if(timer == 25)
+           {
+                System.out.println("Current Time: " + time);
+           }
+           if(timer == 20)
+           {
+                System.out.println("Current Time: " + time);
+           }
+           if(timer == 15)
+           {
+                System.out.println("Current Time: " + time);
+           }
+           if(timer == 10)
+           {
+                System.out.println("Current Time: " + time);
+           }
+           if(timer == 5)
+           {
+                System.out.println("Current Time: " + time);
+           }
+            }
+           if(timer == 0)
+           {
+               System.out.println("Current Time: " + time);
+               timer.cancel();
+           }
+             }
+
+       }
 
    }
 
-}    
+}
