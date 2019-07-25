@@ -1,11 +1,11 @@
-public class Timer1
+public class Timer
 {
 
     int time;
     //getter for timer remaining on timer
     Clock clock;
     
-    public Timer1(int s, Clock clock)
+    public Timer(int s, Clock clock)
     {
         time = s;
         this.clock = clock;
