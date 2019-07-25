@@ -1,12 +1,12 @@
 /**
  *
  * @author Hayden C.
- * @version 1.0
+ * @version 1.1
  *
  */
 public class Lane {
     
-    public CarQueue queue;
+    public CarList carList; //the arraylist
     private TrafficLight light;
     private Sensor sense;
     private boolean car;
@@ -22,8 +22,8 @@ public class Lane {
      */
     public Lane(char tag) {
         light = new TrafficLight();
-        queue = new CarQueue();
-        sense = new Sensor(queue);
+        carList = new CarList();
+        sense = new Sensor(carList);
         this.tag = tag;
         setOppTag();
     }
@@ -47,7 +47,7 @@ public class Lane {
     *
     */
     public void addCar(Car car) {
-        queue.add(car);
+        carList.add(car);
     }
 
     /**
@@ -55,7 +55,7 @@ public class Lane {
      *
      */
     public void removeCar() {
-        queue.remove();
+        carList.remove();
     }
     
     /**
