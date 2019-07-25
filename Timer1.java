@@ -1,30 +1,32 @@
-public class Timer1 extends Thread
+public class Timer1
 {
 
     int time;
-    boolean sentinal;
-
-    public Timer1(int s)
+    //getter for timer remaining on timer
+    Clock clock;
+    
+    public Timer1(int s, Clock clock)
     {
         time = s;
-        sentinal = false;
+        this.clock = clock;
     }
 
-    public int start()
+    public int getTime()
     {
-        
-        try
-        {   
-            Thread.sleep(time*1000);
-        }
-        catch(Exception e)
-        {
+        return time;
+    }
 
-        }
+    public void tick(int t)
+    {
+        //global time incremented
+        clock.setSeconds(t);
+        //decrement different time here
+        time = time-t;
+    }
 
-        
-        sentinal = true;
-
+    public void setTime(int sec)
+    {
+        time = sec;
     }
 
 }
