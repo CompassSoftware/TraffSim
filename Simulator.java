@@ -32,6 +32,18 @@ public class Simulator{
     }
 
     public static void run (String[] args){
+        System.out.println("\t\t***This is a Simulation of an Eastbound Car moving into a 4-way intersection***");
+
+        //Set up all lanes and controller, north and south lanes start as green
+        Lane[] lanes = new Lane[4];
+        for (int i = 0; i < lanes.length; i++) lanes[i] = new Lane('N');
+        lanes[1].setTag('W');
+        lanes[2].setTag('S');
+        lanes[3].setTag('E');
+        Controller intersectControl = new Controller(lanes);
+        lanes[0].setLight('G');
+        lanes[2].setLight('G');
+
 
 
         /*
@@ -41,9 +53,18 @@ public class Simulator{
          */
         int i = 0;
         int minTimer;
+        Lane currlane = new lane;
+        Timer minTimer = new Timer();
+        Timer maxTimer = new Timer();
+        Timer globaltimer = new Timer();
+
         //globaltimer to stop program, otherwise runs regardless of the amount of cars remaining
         while(globaltimer > 0){
-            
+            currlane = lanes[i%4];
+            minTimer.setTime(MINTIME);
+            maxTimer.setTime(MAXTIME);
+
+
             /*
              * inner loop represents the ticks in a single light CYCLE. 
              * Exiting this loop means that the green lights
@@ -53,17 +74,18 @@ public class Simulator{
              */
             while(minTimer > 0 && maxTimer > 0){
                 intersectControl.printLights();             //always show the status of the lights
-                if (head.peek() != null){                   //checks if there is a car at the front of the list
-                    head.go();                              //car drives thru intersection and leaves
+                if (currlane.list.head.peek() != null){     //checks if there is a car at the front of the list
+                    currlane.list.head.go();                //car drives thru intersection and leaves
                     minTimer.setTime(MINTIME);              //reset mintimer because a car triggered the sensor in its lane
                 }
-                else
-                    minTimer.tick();                        //tick minTimer only when a car does not trigger the head sensor
 
-                maxTimer.tick();    
-                carList.advance();                          //Always tick maxtimer and advance the carlist
+
+                Timer.tick();    
+                curlane.list.advance();                     //Always tick and advance the carlist
             }
-                    }
+            intersectControl.sendCar(lanes[(i+1)%4]);
+            i++;
+        }
     }
 
 
