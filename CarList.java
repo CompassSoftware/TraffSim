@@ -9,23 +9,40 @@ import java.util.ArrayList;
  *  @version 1.0
  *
  */
-public class CarList extends ArrayList {
+public class CarList {
+    private ArrayList<Car> list;
+
+    public CarList () {
+        list = new ArrayList<Car>();
+    }
 
     /**
-     * Does not change queue, returns first car.
-     * @return      first car in queue
+     * Does not change list, returns first car.
+     * @return      first car in List
      */
     public Car peek(){
-        return get(0);
+        return list.get(0);
     }
 
     /**
      * Pops and returns first car in queue. Throws exception if empty
      * @return      first car in queue
      */
-    public Car remove(Car c) {
+    public Car remove() {
         Car car = peek();
-        remove(c);
+        list.remove(0);
         return car;
+    }
+
+    public void add(Car c) {
+        list.add(c);
+    }
+
+    public ArrayList getList() {
+        return list;
+    }
+
+    public void setList(ArrayList list) {
+        this.list = list;
     }
 }

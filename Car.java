@@ -47,7 +47,7 @@ public class Car {
             setSensor(false);
             System.out.println("The car leaves the " 
             		+ lane.getTag()  + " intersection.");
-            lane.queue.remove();
+            lane.list.remove();
         }
     }
 

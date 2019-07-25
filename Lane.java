@@ -6,7 +6,7 @@
  */
 public class Lane {
     
-    public CarQueue queue;
+    public CarList list;
     private TrafficLight light;
     private Sensor sense;
     private boolean car;
@@ -22,8 +22,8 @@ public class Lane {
      */
     public Lane(char tag) {
         light = new TrafficLight();
-        queue = new CarQueue();
-        sense = new Sensor(queue);
+        list = new CarList();
+        sense = new Sensor(list);
         this.tag = tag;
         setOppTag();
     }
@@ -47,7 +47,7 @@ public class Lane {
     *
     */
     public void addCar(Car car) {
-        queue.add(car);
+        list.add(car);
     }
 
     /**
@@ -55,7 +55,7 @@ public class Lane {
      *
      */
     public void removeCar() {
-        queue.remove();
+        list.remove();
     }
     
     /**

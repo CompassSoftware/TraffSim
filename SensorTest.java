@@ -7,13 +7,13 @@ import org.junit.jupiter.api.BeforeEach;
 public class SensorTest {
    
     static Sensor sense;
-    static CarQueue q;
+    static CarList list;
     static Car car;
     static Lane lane;
 
     @BeforeEach
     void init() {
-        q = new CarQueue();
+        list = new CarList();
         lane = new Lane('E');
         car = new Car(lane);
 
@@ -22,15 +22,15 @@ public class SensorTest {
     @Test
     public void testCarSensor() {
         
-        q.add(car);
-        sense = new Sensor(q);
+        list.add(car);
+        sense = new Sensor(list);
         assertTrue(sense.getCarOnSensor());
 
     }
 
     @Test
     public void testCarSensorFalse(){
-        sense = new Sensor(q);
+        sense = new Sensor(list);
         assertFalse(sense.getCarOnSensor());
     }
 
