@@ -1,5 +1,5 @@
 /**
- * Sensor class - checks to see if car is present.
+ * Sensor class 
  * @author Sam Howard
  * @version 7/23/19
  */
@@ -10,7 +10,7 @@ public class Sensor {
     
     /**
      * Class Constructor.
-     * @param q queue object
+     * @param c carList object
      */
     public Sensor(CarList c) {
         this.carList = c;
