@@ -9,11 +9,10 @@ public class Clock {
     public int seconds;
     public int minutes;
     public int hours = 12;
-    public String scnds = "";
-    public String mnts = "";
-    public String hrs = "";
-    public String time = "";
-    Clock clock;
+    public String scnds;
+    public String mnts;
+    public String hrs;
+    public String time;
 
     /**
      * Class Constructor.
@@ -43,7 +42,6 @@ public class Clock {
             
             minutes++;
             seconds = seconds - 60;
-
         }
     }
 
