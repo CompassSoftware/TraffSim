@@ -1,32 +1,46 @@
-public class Timer
+public class Timer extends Thread
 {
+	int timeUsed;
+	boolean timeV;
+	TimerClient callbackObject;
 
-    int time;
-    //getter for timer remaining on timer
-    Clock clock;
-    
-    public Timer(int s, Clock clock)
-    {
-        time = s;
-        this.clock = clock;
-    }
+	public Timer(int millis)
+	{
+		timeUsed = millis;
+		timeV = false;
+	}
+	public Timer(int millis, TimerClient client)
+	{
+		this(millis);
+		callbackObject = client;
+	}
+	public void run()
+	{
+		try
+		{
+			Thread.sleep(timeUsed);
+		}
+		catch(Exception e)
+		{
+			
+		}
 
-    public int getTime()
-    {
-        return time;
-    }
+		timeV = true;
+		if (callbackObject != null) 
+		{
+			callbackObject.timerCallback();
+		}
+	}
 
-    public void tick(int t)
-    {
-        //global time incremented
-        clock.setSeconds(t);
-        //decrement different time here
-        time = time-t;
-    }
-
-    public void setTime(int sec)
-    {
-        time = sec;
-    }
-
+	public boolean expired()
+	{
+		return timeV;
+	}
+	
+	public void start()
+	{
+		//System.out.println("Starting: " + timeUsed + " Second Timer ");
+		super.start();
+		
+	}
 }
