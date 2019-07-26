@@ -5,7 +5,7 @@
  */
 public class Sensor {
     
-    CarList list;;
+    CarList list;
     boolean carOnSensor;
     
     /**
