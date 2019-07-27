@@ -54,7 +54,7 @@ public class Simulator{
          */
         int i = 0;
         int minTimer;
-        Lane currlane = new lane;
+        Lane currlane = new lane();
         Timer minTimer = new Timer();
         Timer maxTimer = new Timer();
         Timer globaltimer = new Timer();
@@ -82,7 +82,7 @@ public class Simulator{
 
 
                 Timer.tick();    
-                curlane.list.advance();                     //Always tick and advance the carlist
+                currlane.list.advance();                     //Always tick and advance the carlist
             }
             intersectControl.sendCar(lanes[(i+1)%4]);
             i++;
@@ -91,7 +91,6 @@ public class Simulator{
 
 
 }
-
 
 
 
