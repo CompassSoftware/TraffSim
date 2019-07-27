@@ -53,14 +53,14 @@ public class Simulator{
          * all the scenarios.
          */
         int i = 0;
-        int minTimer;
-        Lane currlane = new lane();
-        Timer minTimer = new Timer();
-        Timer maxTimer = new Timer();
+        Lane currlane = new Lane();
+        
+        Timer minTimer = new Timer(MINTIME);
+        Timer maxTimer = new Timer(MAXTIME);
         Timer globaltimer = new Timer();
 
         //globaltimer to stop program, otherwise runs regardless of the amount of cars remaining
-        while(globaltimer > 0){
+        while(globaltimer.getTime() > 0){
             currlane = lanes[i%4];
             minTimer.setTime(MINTIME);
             maxTimer.setTime(MAXTIME);
@@ -73,7 +73,7 @@ public class Simulator{
              *
              * REQUIRES: some method of switching to the next lane
              */
-            while(minTimer > 0 && maxTimer > 0){
+            while(minTimer.getTime() > 0 && maxTimer.getTime() > 0){
                 intersectControl.printLights();             //always show the status of the lights
                 if (currlane.list.head.peek() != null){     //checks if there is a car at the front of the list
                     currlane.list.head.go();                //car drives thru intersection and leaves

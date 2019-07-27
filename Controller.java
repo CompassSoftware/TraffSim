@@ -11,11 +11,10 @@ import java.util.Arrays;
  * 
  * 07/21/2019
  */
+    public static int MINTIME = 2;
+    public static int MAXTIME = 12;
 
 public class Controller{
-    private static int MINTIME = 10;
-    private static int MAXTIME = 60;
-
     private Lane[] lanes;
     private int[] laneWithCar;
 
@@ -79,20 +78,20 @@ public class Controller{
 
             }
         }
-        
+
         if (changed) {
             System.out.println("Lights notified to change");
             printLights();
         }
 
-            for (Lane l : lanes)
-                if (lanes[laneToSend].getTag() == l.getTag()
-                        || lanes[laneToSend].getOppTag() == l.getTag()) l.setLight('G');
+        for (Lane l : lanes)
+            if (lanes[laneToSend].getTag() == l.getTag()
+                    || lanes[laneToSend].getOppTag() == l.getTag()) l.setLight('G');
 
-            System.out.println("Lights notified to change");
-            printLights();
-        }
+        System.out.println("Lights notified to change");
+        printLights();
     }
+
 
     /**
      * Method that prints the states of each lanes light.
