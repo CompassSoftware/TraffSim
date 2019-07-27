@@ -1,4 +1,4 @@
-/*
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
 import java.io.ByteArrayOutputStream;
@@ -13,6 +13,7 @@ public class PedestrianTest
     @BeforeEach
     public void init()
     {
+        //needs to be altered for crosswalk implementation
         original = System.out;
         ped = new Pedestrian("southbound");
         out = new ByteArrayOutputStream();
@@ -25,7 +26,7 @@ public class PedestrianTest
         System.setOut(original);
     }
 
-@Test
+    @Test
     public void testGo()
     {
         ped.go();
@@ -33,7 +34,7 @@ public class PedestrianTest
         assertEquals("Pedestrian crosses at the " + ped.getLocation() + " crosswalk" , out.toString());
     }
 
-@Test
+    @Test
     public void testStop()
     {
         ped.stop();
@@ -75,4 +76,4 @@ public class PedestrianTest
         assertEquals(loc, "southbound");
     }
 }
-*/
+

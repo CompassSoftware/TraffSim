@@ -35,16 +35,17 @@ public class Simulator{
         System.out.println("\t\t***This is a Simulation of an Eastbound Car moving into a 4-way intersection***");
 
         //Set up all lanes and controller, north and south lanes start as green
+
         Lane[] lanes = new Lane[4];
-        for (int i = 0; i < lanes.length; i++) lanes[i] = new Lane('N');
+        for (int i = 0; i < lanes.length; i++) {
+            lanes[i] = new Lane('N');
+        }
         lanes[1].setTag('W');
         lanes[2].setTag('S');
         lanes[3].setTag('E');
         Controller intersectControl = new Controller(lanes);
         lanes[0].setLight('G');
         lanes[2].setLight('G');
-
-
 
         /*
          * To model different scenarios, we can just change the amount of cars and
