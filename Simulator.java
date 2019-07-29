@@ -47,18 +47,26 @@ public class Simulator{
         lanes[0].setLight('G');
         lanes[2].setLight('G');
 
+
         /*
          * To model different scenarios, we can just change the amount of cars and
          * the lanes they're in, but the logic below should (once finished) be run for
          * all the scenarios.
          */
+
+
+        Car eastCar = new Car(lanes[3]);
+        Car northCar = new Car(lanes[0]);
+        lanes[3].list.add(eastCar);
+        lanes[0].list.add(northCar);
+
         int i = 0;
-        
+
 
         Clock clock = new Clock();       
         Timer minTimer = new Timer(intersectControl.MINTIME, clock);
         Timer maxTimer = new Timer(intersectControl.MAXTIME, clock);
-        Timer globalTimer = new Timer(30, clock);
+        Timer globalTimer = new Timer(6, clock);
 
 
 
@@ -76,19 +84,20 @@ public class Simulator{
              *
              * REQUIRES: some method of switching to the next lane
              */
-            while(minTimer.getTime() > 0 && maxTimer.getTime() > 0){
+            while(minTimer.getTime() > 0 && maxTimer.getTime() > 0 && globalTimer.getTime() > 0){
                 intersectControl.printLights();             //always show the status of the lights
-                if (currlane.list.peek() != null){     //checks if there is a car at the front of the list
-                    currlane.list.remove().go();                //car drives thru intersection and leaves
-                    minTimer.setTime(intersectControl.MINTIME);              //reset mintimer because a car triggered the sensor in its lane
+                if (currlane.list.size() > 0){
+                    if (currlane.list.peek() != null){     //checks if there is a car at the front of the list
+                        currlane.list.peek().go();                //car drives thru intersection and leaves
+                        minTimer.setTime(intersectControl.MINTIME);              //reset mintimer because a car triggered the sensor in its lane
+                    }
                 }
-
-
                 minTimer.tick(1);
                 maxTimer.tick(1);
                 globalTimer.tick(1);    
                 currlane.list.advance();                     //Always tick and advance the carlist
             }
+
             intersectControl.sendCar((i+1)%4);
             i++;
         }
