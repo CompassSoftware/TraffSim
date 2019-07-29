@@ -55,15 +55,16 @@ public class Simulator{
         int i = 0;
         Lane currlane = new Lane();
         
-        Timer minTimer = new Timer(MINTIME);
-        Timer maxTimer = new Timer(MAXTIME);
-        Timer globaltimer = new Timer();
+        Timer minTimer = new Timer(intersectControl.MINTIME);
+        Timer maxTimer = new Timer(intersectControl.MAXTIME);
+        Clock globalTimer = new Clock();
+        
 
         //globaltimer to stop program, otherwise runs regardless of the amount of cars remaining
         while(globaltimer.getTime() > 0){
             currlane = lanes[i%4];
-            minTimer.setTime(MINTIME);
-            maxTimer.setTime(MAXTIME);
+            minTimer.setTime(intersectControl.MINTIME);
+            maxTimer.setTime(intersectControl.MAXTIME);
 
 
             /*
@@ -77,7 +78,7 @@ public class Simulator{
                 intersectControl.printLights();             //always show the status of the lights
                 if (currlane.list.head.peek() != null){     //checks if there is a car at the front of the list
                     currlane.list.head.go();                //car drives thru intersection and leaves
-                    minTimer.setTime(MINTIME);              //reset mintimer because a car triggered the sensor in its lane
+                    minTimer.setTime(intersectControl.MINTIME);              //reset mintimer because a car triggered the sensor in its lane
                 }
 
 
