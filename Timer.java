@@ -19,7 +19,7 @@ public class Timer
     public void tick(int t)
     {
         //global time incremented
-        clock.setSeconds(t);
+        //clock.setSeconds(t);
         //decrement different time here
         time = time-t;
     }

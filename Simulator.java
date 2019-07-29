@@ -4,33 +4,6 @@ public class Simulator{
         run(args);
     }
 
-    //public static void run1(String [] args){
-    //    System.out.println("\t\t***This is a Simulation of an Eastbound Car moving into a 4-way intersection***");
-    //    Lane[] lanes = new Lane[4];
-    //    for (int i = 0; i < lanes.length; i++) lanes[i] = new Lane('N');
-    //    lanes[1].setTag('W');
-    //    lanes[2].setTag('S');
-    //    lanes[3].setTag('E');
-    //    Car eastCar = new Car(lanes[3]); // Eastbound Lane
-    //    lanes[3].queue.add(eastCar);
-    //    Controller intersectControl = new Controller(lanes);
-    //    lanes[0].setLight('G');
-    //    lanes[2].setLight('G');
-
-    //    while (lanes[0].queue.peek() != null || lanes[1].queue.peek() != null 
-    //            || lanes[2].queue.peek() != null || lanes[3].queue.peek() != null){ // There is a car in a lane
-
-    //        intersectControl.printLights();
-    //        eastCar.stop();
-    //        int[] lanesWithCar = intersectControl.lanesWithCar();
-    //        for (int laneToSend : lanesWithCar)
-    //            if (laneToSend != -1) intersectControl.sendCar(laneToSend);
-    //        eastCar.go();
-    //    }
-    //    System.out.println("No more cars on intersection");
-    //    System.out.println("\t\t***Simulation Concluded***");
-    //}
-
     public static void run (String[] args){
         System.out.println("\t\t***This is a Simulation of an Eastbound Car moving into a 4-way intersection***");
 
@@ -57,8 +30,8 @@ public class Simulator{
 
         Car eastCar = new Car(lanes[3]);
         Car northCar = new Car(lanes[0]);
-        lanes[3].list.add(eastCar);
-        lanes[0].list.add(northCar);
+        //lanes[3].list.add(eastCar);
+        //lanes[0].list.add(northCar);
 
         int i = 0;
 
@@ -66,7 +39,7 @@ public class Simulator{
         Clock clock = new Clock();       
         Timer minTimer = new Timer(intersectControl.MINTIME, clock);
         Timer maxTimer = new Timer(intersectControl.MAXTIME, clock);
-        Timer globalTimer = new Timer(6, clock);
+        Timer globalTimer = new Timer(20, clock);
 
 
 
@@ -83,22 +56,27 @@ public class Simulator{
              * will be made red and the red lights will be made green
              *
              * REQUIRES: some method of switching to the next lane
+             *
+             * Waiting too long to send cars: if the currLane is the east lane,
+             * this code ignores the west lane until it cycles over to it
              */
             while(minTimer.getTime() > 0 && maxTimer.getTime() > 0 && globalTimer.getTime() > 0){
-                intersectControl.printLights();             //always show the status of the lights
+            
                 if (currlane.list.size() > 0){
                     if (currlane.list.peek() != null){     //checks if there is a car at the front of the list
                         currlane.list.peek().go();                //car drives thru intersection and leaves
                         minTimer.setTime(intersectControl.MINTIME);              //reset mintimer because a car triggered the sensor in its lane
                     }
                 }
-                minTimer.tick(1);
+                minTimer.tick(1);    
                 maxTimer.tick(1);
-                globalTimer.tick(1);    
+                globalTimer.tick(1);
+                clock.setSeconds(1);
                 currlane.list.advance();                     //Always tick and advance the carlist
             }
 
             intersectControl.sendCar((i+1)%4);
+            clock.toString();
             i++;
         }
     }
