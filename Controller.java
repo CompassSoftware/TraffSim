@@ -11,10 +11,11 @@ import java.util.Arrays;
  * 
  * 07/21/2019
  */
+public class Controller{
     public static int MINTIME = 2;
     public static int MAXTIME = 12;
 
-public class Controller{
+
     private Lane[] lanes;
     private int[] laneWithCar;
 
