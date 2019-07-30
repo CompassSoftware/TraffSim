@@ -84,7 +84,9 @@ public class Lane {
     public char getTag() {
         return tag;
     }
-    
+   
+    public void advance() {
+    }     
     /**
      * Retrieves light color in string form.
      * 
