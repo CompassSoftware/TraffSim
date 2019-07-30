@@ -57,8 +57,8 @@ public class Simulator{
 
         Car eastCar = new Car(lanes[3]);
         Car northCar = new Car(lanes[0]);
-        lanes[3].list.add(eastCar);
-        lanes[0].list.add(northCar);
+        lanes[3].addCar(eastCar);
+        lanes[0].addCar(northCar);
 
         int i = 0;
 

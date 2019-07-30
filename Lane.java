@@ -48,6 +48,7 @@ public class Lane {
     */
     public void addCar(Car car) {
         list.add(car);
+        sense.set();
     }
 
     /**

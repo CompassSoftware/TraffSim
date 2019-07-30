@@ -37,4 +37,8 @@ public class Sensor {
         return carOnSensor;
     }
 
+    public void set() {
+        carOnSensor = true;
+    }
+
 }
