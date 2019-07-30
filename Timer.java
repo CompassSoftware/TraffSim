@@ -2,13 +2,10 @@ public class Timer
 {
 
     int time;
-    //getter for timer remaining on timer
-    Clock clock;
     
-    public Timer(int s, Clock clock)
+    public Timer(int s)
     {
         time = s;
-        this.clock = clock;
     }
 
     public int getTime()
@@ -18,9 +15,6 @@ public class Timer
 
     public void tick(int t)
     {
-        //global time incremented
-        clock.setSeconds(t);
-        //decrement different time here
         time = time-t;
     }
 

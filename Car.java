@@ -10,7 +10,8 @@ public class Car {
     private boolean motion;
     private boolean onSensor;
     private Lane lane;
-    
+    private boolean real;
+
     /**
      *  Car constructor takes a lane object and returns a car object.
      *
@@ -20,10 +21,10 @@ public class Car {
         motion = true;
         onSensor = false;
         this.lane = lane;
-        System.out.println("The car approaches the "
-        		+ lane.getTag() + " lane of the intersection.");
+        if (real) System.out.println("The car approaches the "
+                + lane.getTag() + " lane of the intersection.");
     }
-    
+
     /**
      *  Stop orders the car to stop moving and prints where it stops.
      */
@@ -32,12 +33,12 @@ public class Car {
             setMotion(false);
             setSensor(true);
             System.out.print("The car has stopped at the " 
-            		+ lane.getTag() + " intersection. ");
+                    + lane.getTag() + " intersection. ");
             System.out.println("The " + lane.getTag() 
-            	+ " Sensor has been notified");
+                    + " Sensor has been notified");
         }
     }
-    
+
     /**
      *  Go orders the car to leave the intersection and tells where it goes.
      */
@@ -46,7 +47,7 @@ public class Car {
             setMotion(true);
             setSensor(false);
             System.out.println("The car leaves the " 
-            		+ lane.getTag()  + " intersection.");
+                    + lane.getTag()  + " intersection.");
             lane.list.remove();
         }
     }
@@ -68,7 +69,7 @@ public class Car {
     public boolean getMotion() {
         return motion;
     }
-    
+
     /**
      *  setMotion is set to t/f depending if the car has stopped or gone.
      *  
@@ -103,7 +104,7 @@ public class Car {
     public Lane getLane() {
         return lane;
     }
-    
+
     /**
      *  setLane sets the lane for the car.
      *
@@ -111,5 +112,21 @@ public class Car {
      */
     public void setLane(Lane lane) {
         this.lane = lane;
+    }
+
+    public void setReal(boolean real) {
+        this.real = real;
+    }
+
+    public boolean getReal() {
+        return real;
+    }
+
+    public Car copy(){
+        Car c = new Car(lane);
+        c.setMotion(motion);
+        c.setSensor(onSensor);
+        c.setReal(real);
+        return c;
     }
 }
