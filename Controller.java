@@ -66,7 +66,7 @@ public class Controller{
      *
      * @param laneToSend Lane that needs to be sent by changing light to green.
      */
-    public void sendCar(int laneToSend) {
+    public void sendCar(int laneToSend, ) {
         boolean changed = false;
         Lane redLane = lanes[0];
         if (minTimer.getTime() <= 0 && laneToSend != -1){

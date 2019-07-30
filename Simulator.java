@@ -54,19 +54,24 @@ public class Simulator{
          * all the scenarios.
          */
 
-        Car nonEastCar = new Car(lanes[3]); // creates empty car objects to be inserted
+        //Car nonEastCar = new Car(lanes[3]); // creates empty car objects to be inserted
         Car nonWestCar = new Car(lanes[1]); // into CarList
         Car nonSouthCar = new Car(lanes[2]);
         Car nonNorthCar = new Car(lanes[0]);
 
+        //nonEastCar.setReal(false); // makes all non cars not real
+        nonWestCar.setReal(false);
+        nonSouthCar.setReal(false);
+        nonNorthCar.setReal(false);
+
         lanes[0].addCar(nonNorthCar); // puts an empty car into each lane
         lanes[1].addCar(nonWestCar);
         lanes[2].addCar(nonSouthCar);
-        lanes[3].addCar(nonEastCar);
+        //lanes[3].addCar(nonEastCar);
 
-        //Car eastCar = new Car(lanes[3]);
+        Car eastCar = new Car(lanes[3]);
         //Car northCar = new Car(lanes[0]);
-        //lanes[3].list.add(eastCar);
+        lanes[3].addCar(eastCar);
         //lanes[0].list.add(northCar);
 
 

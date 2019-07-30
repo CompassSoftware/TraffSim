@@ -23,6 +23,7 @@ public class Car {
         this.lane = lane;
         if (real) System.out.println("The car approaches the "
                 + lane.getTag() + " lane of the intersection.");
+        real = true;
     }
 
     /**
