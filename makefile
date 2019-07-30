@@ -12,7 +12,7 @@ CKSTYLE_XML = cs_appstate_checks.xml
 
 
 compile: *.java $(JUNIT5_JAR)
-	javac -cp .:$(JUNIT5_JAR) *.java 
+	javac -g -cp .:$(JUNIT5_JAR) *.java 
 	#javac *.java
 
 clean:
