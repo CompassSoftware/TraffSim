@@ -12,12 +12,14 @@ import java.util.Arrays;
  * 07/21/2019
  */
 public class Controller{
-    public static int MINTIME = 2;
+    public static int QUICKESTCYCLE = 4;
+    public static int QUICKCYCLE = 8;
     public static int MAXTIME = 12;
 
 
     private Lane[] lanes;
     private int[] laneWithCar;
+    private Clock clock;
 
     /**
      * Constructor for Controller class takes in a set of lanes.
@@ -30,7 +32,14 @@ public class Controller{
         this.lanes = lanes;
         laneWithCar = new int[lanes.length];
         // sets array to Null value
-        Arrays.fill(laneWithCar, -1); 
+        Arrays.fill(laneWithCar, -1);
+
+        Timer maxtimer, difftimer, globaltimer;
+        maxtimer = new Timer(MAXTIME);
+        difftimer = new Timer(QUICKCYCLE);
+        globaltimer = new Timer(48);
+
+        clock = new Clock(maxtimer, difftimer, globaltimer); 
     }
 
     /**
@@ -55,53 +64,168 @@ public class Controller{
         return laneWithCar;
     }
 
+    public void fullCylce(int laneToSend){
+
+        switch (lanes[laneToSend].getTag()){
+
+            case 'R':
+                toGreen(laneToSend);
+                printLights();
+                toYellow(laneToSend+1);
+                clock.tick();
+                printLights();
+                toRed(laneToSend+1);
+
+                clock.tick();
+                printLights();
+
+
+                break;
+
+        }
+    }
+
     /*
-     * A method to try to send cars on a specific lane by setting all
-     * other lanes to red, then this lane to green.
+     * ??
      *
      * @param laneToSend Lane that needs to be sent by changing light to green.
      */
-    public void sendCar(int laneToSend) {
-        boolean changed = false;
-        if (lanes[laneToSend].getLight() != 'G') {
-            for (Lane l : lanes) {
-                if (l.getLight() == 'G') {
-                    changed = true;
-                    l.setLight('Y');
-                }
+    public void toYellow(int laneToSend) {
+        Lane opp;
+        for (int i; i < 3; i++){
+            if (lanes[i].getTag() == lanes[laneToSend].getOppTag())
+                opp = lanes[laneToSend];
+        }
+
+        if (lanes[laneToSend].getLight() == 'G'){
+            lanes[laneToSend].setLight('Y');
+            opp.setLight('Y');
+            System.out.println("Lights notified to change");
+            printLights();
+
+            //tick clock somehow?
+            clock.tick();
+        }
+
+        else{
+            if (lanes[laneToSend].getLight() == 'Y')
+                color = "YELLOW";
+            else
+                color = "RED";
+
+            System.out.println("Incorrect cycle call:-\n\tExpected light color: Green"
+                    + "\n\tActual light color: " + color);
+            System.exit(0);
+        }
+
+
+        /*
+         * ??
+         *
+         * @param laneToSend Lane that needs to be sent by changing light to green.
+         */
+        public void toGreen(int laneToSend) {
+            Lane opp;
+            for (int i; i < 3; i++){
+                if (lanes[i].getTag() == lanes[laneToSend].getOppTag())
+                    opp = lanes[laneToSend];
             }
 
-            for (Lane l : lanes)
-                if (l.getLight() == 'Y') l.setLight('R');
-            if (changed){
+            if (lanes[laneToSend].getLight() == 'R'){
+                lanes[laneToSend].setLight('G');
+                opp.setLight('G');
                 System.out.println("Lights notified to change");
                 printLights();
 
+                //tick clock somehow?
+                clock.tick();
+                else{
+                    if (lanes[laneToSend].getLight() == 'Y')
+                        color = "YELLOW";
+                    else
+                        color = "RED";
+
+                    System.out.println("Incorrect cycle call:-\n\tExpected light color: Green"
+                            + "\n\tActual light color: " + color);
+                    System.exit(0);
+                }
+
+
+            }
+            /*
+             * ??
+             *
+             * @param laneToSend Lane that needs to be sent by changing light to green.
+             */
+            public void toRed(int laneToSend) {
+                Lane opp;
+                for (int i; i < 3; i++){
+                    if (lanes[i].getTag() == lanes[laneToSend].getOppTag())
+                        opp = lanes[laneToSend];
+                }
+
+                if (lanes[laneToSend].getLight() == 'Y'){
+                    lanes[laneToSend].setLight('R');
+                    opp.setLight('R');
+                    System.out.println("Lights notified to change");
+                    printLights();
+
+                    //tick clock somehow?
+                    clock.tick();
+                    else{
+                        if (lanes[laneToSend].getLight() == 'Y')
+                            color = "YELLOW";
+                        else
+                            color = "RED";
+
+                        System.out.println("Incorrect cycle call:-\n\tExpected light color: Green"
+                                + "\n\tActual light color: " + color);
+                        System.exit(0);
+                    }
+
+
+                }
+
+                //  boolean changed = false;
+                //  if (lanes[laneToSend].getLight() != 'G') {
+                //      for (Lane l : lanes) {
+                //          if (l.getLight() == 'G') {
+                //              changed = true;
+                //              l.setLight('Y');
+                //          }
+                //      }
+
+                //      for (Lane l : lanes)
+                //          if (l.getLight() == 'Y') l.setLight('R');
+                //      if (changed){
+                //          System.out.println("Lights notified to change");
+                //          printLights();
+
+                //      }
+                //  }
+
+                //  if (changed) {
+                //      System.out.println("Lights notified to change");
+                //      printLights();
+                //  }
+
+                //  for (Lane l : lanes)
+                //      if (lanes[laneToSend].getTag() == l.getTag()
+                //              || lanes[laneToSend].getOppTag() == l.getTag()) l.setLight('G');
+
+                //  System.out.println("Lights notified to change");
+                //  printLights();
+            }
+
+
+            /**
+             * Method that prints the states of each lanes light.
+             */
+            public void printLights() {
+                for (Lane l : lanes) {
+                    System.out.print("\t" + l.getTag() + " " + l.printLight());
+                }
+                System.out.println();
             }
         }
-
-        if (changed) {
-            System.out.println("Lights notified to change");
-            printLights();
-        }
-
-        for (Lane l : lanes)
-            if (lanes[laneToSend].getTag() == l.getTag()
-                    || lanes[laneToSend].getOppTag() == l.getTag()) l.setLight('G');
-
-        System.out.println("Lights notified to change");
-        printLights();
-    }
-
-
-    /**
-     * Method that prints the states of each lanes light.
-     */
-    public void printLights() {
-        for (Lane l : lanes) {
-            System.out.print("\t" + l.getTag() + " " + l.printLight());
-        }
-        System.out.println();
-    }
-}
 

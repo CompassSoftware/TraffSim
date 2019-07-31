@@ -13,15 +13,26 @@ public class Clock {
     public String mnts = "";
     public String hrs = "";
     public String time = "";
-    Clock clock;
+    public Timer maxtimer, difftimer, globaltimer;
 
     /**
      * Class Constructor.
      **/
-    public Clock() {
+    public Clock(Timer maxtimer, Timer difftimer, Timer globaltimer) {
         this.seconds = seconds;
         this.minutes = minutes;
         this.hours = hours;
+        this.maxtimer = maxtimer;
+        this.difftimer = difftimer;
+        this.globaltimer = globaltimer;
+    }
+
+    public void tick(int t){
+    maxtimer.tick(t);
+    difftimer.tick(t);
+    globaltimer.tick(t);
+    setSeconds(int sec);
+    
     }
 
     /**
