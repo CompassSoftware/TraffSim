@@ -103,7 +103,7 @@ public class Controller{
             minTimer.setTime(MINTIME);
             maxTimer.setTime(MAXTIME);
         }
-        if (maxTimer.getTime() <= 0){
+        if (maxTimer.getTime() <= 2){
             incGlobalTime++;
             for (Lane l : lanes){
                 if (l.getLight() == 'G'){
@@ -138,7 +138,7 @@ public class Controller{
             System.out.println("Lights notified to change");
             printLights();
             minTimer.setTime(MINTIME);
-            maxTimer.setTime(MAXTIME);
+            maxTimer.setTime(MAXTIME + 1);
 
         }
         minTimer.tick(1);
