@@ -76,7 +76,7 @@ public class Simulator{
 
 
         Clock clock = new Clock();       
-        Timer globalTimer = new Timer(35);
+        Timer globalTimer = new Timer(50);
         int tickTime = 1;
         int[] lanesWithCar;
         System.out.print("[" + clock.toString() + "] ");
