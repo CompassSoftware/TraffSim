@@ -66,9 +66,10 @@ public class Controller{
      *
      * @param laneToSend Lane that needs to be sent by changing light to green.
      */
-    public void sendCar(int laneToSend, ) {
+    public int sendCar(int laneToSend, Clock clock) {
         boolean changed = false;
         Lane redLane = lanes[0];
+        int incGlobalTime = 0;
         if (minTimer.getTime() <= 0 && laneToSend != -1){
             if( lanes[laneToSend].getLight() != 'G') {
                 for (Lane l : lanes) {
@@ -103,6 +104,7 @@ public class Controller{
             maxTimer.setTime(MAXTIME);
         }
         if (maxTimer.getTime() <= 0){
+            incGlobalTime++;
             for (Lane l : lanes){
                 if (l.getLight() == 'G'){
                     changed = true;
@@ -111,12 +113,18 @@ public class Controller{
                 else redLane = l;
             }
             if (changed) {
+                clock.setSeconds(1);
+                incGlobalTime++;    
+                System.out.print("[" + clock.toString() + "]");
                 System.out.println("Lights notified to change");
                 printLights();
             }
             for (Lane l : lanes)
                 if (l.getLight() == 'Y') l.setLight('R');
             if (changed){
+                clock.setSeconds(1);
+                incGlobalTime++;    
+                System.out.print("[" + clock.toString() + "]");
                 System.out.println("Lights notified to change");
                 printLights();
 
@@ -124,15 +132,18 @@ public class Controller{
 
             redLane.setLight('G');
             for(Lane l : lanes) if (redLane.getOppTag() == l.getTag()) l.setLight('G');
+            clock.setSeconds(1);
+            incGlobalTime++;    
+            System.out.print("[" + clock.toString() + "]");
             System.out.println("Lights notified to change");
             printLights();
             minTimer.setTime(MINTIME);
             maxTimer.setTime(MAXTIME);
 
         }
-
         minTimer.tick(1);
         maxTimer.tick(1);
+        return incGlobalTime;
     }
 
 

@@ -54,12 +54,12 @@ public class Simulator{
          * all the scenarios.
          */
 
-        //Car nonEastCar = new Car(lanes[3]); // creates empty car objects to be inserted
+        Car nonEastCar = new Car(lanes[3]); // creates empty car objects to be inserted
         Car nonWestCar = new Car(lanes[1]); // into CarList
         Car nonSouthCar = new Car(lanes[2]);
         Car nonNorthCar = new Car(lanes[0]);
 
-        //nonEastCar.setReal(false); // makes all non cars not real
+        nonEastCar.setReal(false); // makes all non cars not real
         nonWestCar.setReal(false);
         nonSouthCar.setReal(false);
         nonNorthCar.setReal(false);
@@ -67,20 +67,21 @@ public class Simulator{
         lanes[0].addCar(nonNorthCar); // puts an empty car into each lane
         lanes[1].addCar(nonWestCar);
         lanes[2].addCar(nonSouthCar);
-        //lanes[3].addCar(nonEastCar);
+        lanes[3].addCar(nonEastCar);
 
-        Car eastCar = new Car(lanes[3]);
+        //Car eastCar = new Car(lanes[3]);
         //Car northCar = new Car(lanes[0]);
-        lanes[3].addCar(eastCar);
+        //lanes[3].addCar(eastCar);
         //lanes[0].list.add(northCar);
 
 
         Clock clock = new Clock();       
-        Timer globalTimer = new Timer(20);
+        Timer globalTimer = new Timer(35);
         int tickTime = 1;
         int[] lanesWithCar;
         System.out.print("[" + clock.toString() + "] ");
         intersectControl.printLights();
+        int incGlobalTime = 0;
         //globaltimer to stop program, otherwise runs regardless of the amount of cars remaining
 
         lanesWithCar = intersectControl.lanesWithCar();
@@ -89,9 +90,10 @@ public class Simulator{
             for (int laneToSend : lanesWithCar){
                 clock.setSeconds(tickTime);
                 System.out.print("[" + clock.toString() + "]");
-                globalTimer.tick(tickTime);
-                intersectControl.sendCar(laneToSend);
-                System.out.println();
+                intersectControl.printLights();
+                incGlobalTime = intersectControl.sendCar(laneToSend, clock);
+                globalTimer.tick(tickTime + incGlobalTime);
+                //System.out.println();
             }
         }
     }
