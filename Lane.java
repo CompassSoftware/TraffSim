@@ -51,7 +51,7 @@ public class Lane {
     }
 
     /**
-     * This method removes a car from the queue.
+     * This method removes a car from the list.
      *
      */
     public void removeCar() {
