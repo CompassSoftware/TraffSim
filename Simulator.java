@@ -1,7 +1,23 @@
+import java.util.Scanner;
+
 public class Simulator{
 
+	Scanner s = new Scanner(System.in);
+	String str;
+			
     public static void main (String[] args){
-        run(args);
+    	do {
+    		System.out.println("run - No Car sim");
+        	System.out.println("run1 - Eastbound Car (issue 1)");
+        	System.out.println("help - Print again");
+        	str = s.nextLine();
+    	} while (str == "help");
+
+    	if (str == "run") {
+    		run(args);
+    	} else if (str == "run1") {
+    		run1(args);
+    	}
     }
 
     //public static void run1(String [] args){
@@ -54,47 +70,52 @@ public class Simulator{
          * all the scenarios.
          */
 
-        Car nonEastCar = new Car(lanes[3]); // creates empty car objects to be inserted
-        Car nonWestCar = new Car(lanes[1]); // into CarList
-        Car nonSouthCar = new Car(lanes[2]);
-        Car nonNorthCar = new Car(lanes[0]);
 
-        nonEastCar.setReal(false); // makes all non cars not real
-        nonWestCar.setReal(false);
-        nonSouthCar.setReal(false);
-        nonNorthCar.setReal(false);
+        Car eastCar = new Car(lanes[3]);
+        Car northCar = new Car(lanes[0]);
+        lanes[3].list.add(eastCar);
+        lanes[0].list.add(northCar);
 
-        lanes[0].addCar(nonNorthCar); // puts an empty car into each lane
-        lanes[1].addCar(nonWestCar);
-        lanes[2].addCar(nonSouthCar);
-        lanes[3].addCar(nonEastCar);
-
-        //Car eastCar = new Car(lanes[3]);
-        //Car northCar = new Car(lanes[0]);
-        //lanes[3].addCar(eastCar);
-        //lanes[0].list.add(northCar);
+        int i = 0;
 
 
         Clock clock = new Clock();       
-        Timer globalTimer = new Timer(50);
-        int tickTime = 1;
-        int[] lanesWithCar;
-        System.out.print("[" + clock.toString() + "] ");
-        intersectControl.printLights();
-        int incGlobalTime = 0;
+        Timer minTimer = new Timer(intersectControl.MINTIME, clock);
+        Timer maxTimer = new Timer(intersectControl.MAXTIME, clock);
+        Timer globalTimer = new Timer(6, clock);
+
+
+
         //globaltimer to stop program, otherwise runs regardless of the amount of cars remaining
-
-        lanesWithCar = intersectControl.lanesWithCar();
-
         while(globalTimer.getTime() > 0){
-            for (int laneToSend : lanesWithCar){
-                clock.setSeconds(tickTime);
-                System.out.print("[" + clock.toString() + "]");
-                intersectControl.printLights();
-                incGlobalTime = intersectControl.sendCar(laneToSend, clock);
-                globalTimer.tick(tickTime + incGlobalTime);
-                //System.out.println();
+            Lane currlane = lanes[i%4];
+            minTimer.setTime(intersectControl.MINTIME);
+            maxTimer.setTime(intersectControl.MAXTIME);
+
+
+            /*
+             * inner loop represents the ticks in a single light CYCLE. 
+             * Exiting this loop means that the green lights
+             * will be made red and the red lights will be made green
+             *
+             * REQUIRES: some method of switching to the next lane
+             */
+            while(minTimer.getTime() > 0 && maxTimer.getTime() > 0 && globalTimer.getTime() > 0){
+                intersectControl.printLights();             //always show the status of the lights
+                if (currlane.list.size() > 0){
+                    if (currlane.list.peek() != null){     //checks if there is a car at the front of the list
+                        currlane.list.peek().go();                //car drives thru intersection and leaves
+                        minTimer.setTime(intersectControl.MINTIME);              //reset mintimer because a car triggered the sensor in its lane
+                    }
+                }
+                minTimer.tick(1);
+                maxTimer.tick(1);
+                globalTimer.tick(1);    
+                currlane.list.advance();                     //Always tick and advance the carlist
             }
+
+            intersectControl.sendCar((i+1)%4);
+            i++;
         }
     }
 
