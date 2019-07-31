@@ -31,7 +31,8 @@ public class SensorTest {
     @Test
     public void testCarSensorFalse(){
         sense = new Sensor(list);
-        assertFalse(sense.getCarOnSensor());
+        boolean b = list.isEmpty();
+        assertFalse(b);
     }
 
     
