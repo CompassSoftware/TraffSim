@@ -99,8 +99,8 @@ public class Simulator{
                     for(carspot = 0; carspot < lanes[laneToSend].list.size() 
                         && lanes[laneToSend].list.get(carspot).getReal(); carspot++)
                     
-                    
-                    if(carspot > lanes[laneToSend].list.size()) eastCar.go();  
+                    //logic in car.go should handle every permutation for this call
+                    eastCar.go(carspot);
 
                 globalTimer.tick(tickTime + incGlobalTime);
                 //System.out.println();
