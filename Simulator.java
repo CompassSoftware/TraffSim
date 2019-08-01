@@ -83,7 +83,7 @@ public class Simulator{
         int incGlobalTime = 0;
         //globaltimer to stop program, otherwise runs regardless of the amount of cars remaining
 
-        lanesWithCar = intersectControl.lanesWithCar();
+        lanesWithCar = intersectControl.getLane();
 
         while(globalTimer.getTime() > 0){
             for (int laneToSend : lanesWithCar){
@@ -92,14 +92,14 @@ public class Simulator{
                 intersectControl.printLights();
                 incGlobalTime = intersectControl.sendCar(laneToSend, clock);
 
-                    //Finds the first blank space in the lane, calls go to
-                    //move the cars up to it
-                    int carspot = 0;
-                    for(carspot; carspot < laneToSend.list.size() 
-                        && laneToSend.list.get(carspot).getReal(); carspot++)
-                    
-                    
-                    if(carspot > laneToSend.list.size()) eastCar.go();  
+                //Finds the first blank space in the lane, calls go to
+                //move the cars up to it
+                int carspot = 0;
+                for(carspot; carspot < laneToSend.list.size() 
+                    && laneToSend.list.get(carspot).getReal(); carspot++)
+
+
+                	if(carspot > laneToSend.list.size()) eastCar.go();
                 globalTimer.tick(tickTime + incGlobalTime);
                 //System.out.println();
             }
@@ -161,7 +161,7 @@ public class Simulator{
         int incGlobalTime = 0;
         //globaltimer to stop program, otherwise runs regardless of the amount of cars remaining
 
-        lanesWithCar = intersectControl.lanesWithCar();
+        lanesWithCar = intersectControl.getLane();
 
         while(globalTimer.getTime() > 0){
             for (int laneToSend : lanesWithCar){
@@ -176,6 +176,3 @@ public class Simulator{
         System.out.println("\t\t***Simulation Concluded***");
     }
 }
-
-
-

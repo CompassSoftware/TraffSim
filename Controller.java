@@ -43,7 +43,7 @@ public class Controller{
      *
      * @return an int array of lanes with a car in them.
      */
-    public int[] lanesWithCar(){
+    public void lanesWithCar(){
         for (int i = 0; i < lanes.length; i++){
             if (lanes[i].list.size() > 0 && lanes[i].list.peek().getReal())
                 if (lanes[i].carOnSensor()){ // if a car is on a sensor, add it to the set of lanes with with cars at light.
@@ -57,7 +57,6 @@ public class Controller{
                     laneWithCar[j] = i;
                 }
         }
-        return laneWithCar;
     }
 
     /*
@@ -155,6 +154,10 @@ public class Controller{
             System.out.print("\t" + l.getTag() + " " + l.printLight());
         }
         System.out.println();
+    }
+    
+    public int[] getLane() {
+    	return laneWithCar;
     }
 }
 
