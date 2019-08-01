@@ -35,6 +35,12 @@ public class CarList {
         return car;
     }
 
+    public Car remove(int i){
+    Car car = list.get(i);
+    list.remove(i);
+    return car;
+    }
+
     public void add(Car c) {
         list.add(c);
     }

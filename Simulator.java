@@ -95,11 +95,11 @@ public class Simulator{
                     //Finds the first blank space in the lane, calls go to
                     //move the cars up to it
                     int carspot = 0;
-                    for(carspot; carspot < laneToSend.list.size() 
-                        && laneToSend.list.get(carspot).getReal(); carspot++)
+                    for(carspot = 0; carspot < lanes[laneToSend].list.size() 
+                        && lanes[laneToSend].list.get(carspot).getReal(); carspot++)
                     
                     
-                    if(carspot > laneToSend.list.size()) eastCar.go();  
+                    if(carspot > lanes[laneToSend].list.size()) eastCar.go();  
                 globalTimer.tick(tickTime + incGlobalTime);
                 //System.out.println();
             }
