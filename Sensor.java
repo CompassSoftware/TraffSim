@@ -14,6 +14,7 @@ public class Sensor {
      */
     public Sensor(CarList l) {
         list = l;
+        carOnSensor = false;
     }
     
     /**
