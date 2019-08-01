@@ -2,35 +2,38 @@ import java.util.Scanner;
 
 public class Simulator{
 
-	static Scanner s = new Scanner(System.in);
-	static String str;
+    static Scanner s = new Scanner(System.in);
+    static String str;
 
     public static void main (String[] args){
-    	do {
-    		System.out.println("run - No Car sim");
-        	System.out.println("run1 - Eastbound Car (issue 1)");
-        	System.out.println("help - Print again");
-        	str = s.nextLine();
-        	str.trim();       	
-    	} while (str.compareTo("help") == 0);
-    	
-    	System.out.print("ok");
-    	
-    	if (str.compareTo("run") == 0) {
-    		run(args);
-    	} else if (str.compareTo("run1") == 0) {
-    		run1(args);
-    	}
-    	else {
-    		System.out.println("No valid input.");
-    	}
-    	
+        do {
+            do {
+                System.out.println("run - No Car sim");
+                System.out.println("run1 - Eastbound Car (issue 1)");
+                System.out.println("help - Print again");
+                System.out.println("quit - Exits program");
+                System.out.print("\nInput Needed: ");
+                str = s.nextLine();
+                str.trim();       	
+            } while (str.compareTo("help") == 0);
+
+            if (str.compareTo("run") == 0) {
+                run(args);
+            }
+            else if (str.compareTo("run1") == 0) {
+                run1(args);
+            }
+            else if (str.compareTo("quit") == 0);
+            else {
+                System.out.println("No valid input.");
+            }
+        } while(str.compareTo("quit") != 0);
     }
 
 
     public static void run1(String [] args){
         System.out.println("\t\t***This is a Simulation of an Eastbound Car moving into a 4-way intersection***");
-      //Set up all lanes and controller, north and south lanes start as green
+        //Set up all lanes and controller, north and south lanes start as green
 
         Lane[] lanes = new Lane[4];
         for (int i = 0; i < lanes.length; i++) {
@@ -90,14 +93,14 @@ public class Simulator{
                 incGlobalTime = intersectControl.sendCar(laneToSend, clock);
                 globalTimer.tick(tickTime + incGlobalTime);
                 //System.out.println();
+            }
+            System.out.println("No more cars on intersection");
+            System.out.println("\t\t***Simulation Concluded***");
         }
-        System.out.println("No more cars on intersection");
-        System.out.println("\t\t***Simulation Concluded***");
-    }
     }
 
     public static void run (String[] args){
-        System.out.println("\t\t***This is a Simulation of an Eastbound Car moving into a 4-way intersection***");
+        System.out.println("\t\t***This is a simulation of a 4-way intersection w/ no cars.***");
 
         //Set up all lanes and controller, north and south lanes start as green
 
@@ -161,9 +164,8 @@ public class Simulator{
                 //System.out.println();
             }
         }
+        System.out.println("\t\t***Simulation Concluded***");
     }
-
-
 }
 
 
