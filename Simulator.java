@@ -68,10 +68,10 @@ public class Simulator{
         for(int i = 0; i < 4; i++) lanes[2].addCar(nonSouthCar);
         for(int i = 0; i < 4; i++) lanes[3].addCar(nonEastCar);
 
-        //Car eastCar = new Car(lanes[3]);
-        //Car northCar = new Car(lanes[0]);
-        //lanes[3].addCar(eastCar);
-        //lanes[0].list.add(northCar);
+        Car eastCar = new Car(lanes[3]);
+        Car northCar = new Car(lanes[0]);
+        lanes[3].addCar(eastCar);           
+        lanes[0].addCar(northCar);
 
 
         Clock clock = new Clock();       
