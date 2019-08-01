@@ -55,6 +55,8 @@ public class Car {
         else{
             setMotion(true);
             setSensor(false);
+            //dont remove if no empty spot was found
+            if (carspot == lane.list.size() - 1);
             lane.list.remove(carspot);
         }
     }
