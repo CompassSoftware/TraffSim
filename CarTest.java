@@ -37,12 +37,12 @@ public class CarTest {
         System.setOut(original);
     }
 
-
     @Test
     public void testStop()
     {
         car.stop();
-        assertEquals("The car has stopped at the " + car.getTag() + " intersection. The " + car.getTag()  + " Sensor has been notified\n" , out.toString());
+        assertEquals("The car has stopped at the " + car.getTag() + " intersection. "
+        		+ "The " + car.getTag()  + " Sensor has been notified\n" , out.toString());
     }
 
     @Test
