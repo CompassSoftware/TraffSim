@@ -10,15 +10,15 @@
  * 
  */
 public class TrafficLight {
-	
-   /**
-	* Enum of three states representing the different light states.
-	*/
+
+    /**
+     * Enum of three states representing the different light states.
+     */
     enum BulbColor {
-	    RED, YELLOW, GREEN
+        RED, YELLOW, GREEN
     }
 
-	
+
     private BulbColor color;
 
     private LightBulb red = new LightBulb();
@@ -80,7 +80,7 @@ public class TrafficLight {
                 this.color = BulbColor.RED;
                 break;
             default:
-            	break;
+                break;
         }
         changeLights();
     }
@@ -105,7 +105,7 @@ public class TrafficLight {
                 break;
             default:
                 System.out.println("Light color is neither RED nor GREEN nor"
-                		+ "YELLOW as reported by enum field in TrafficLight");
+                        + "YELLOW as reported by enum field in TrafficLight");
         }
     }
 

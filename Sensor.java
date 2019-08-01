@@ -4,10 +4,10 @@
  * @version 7/23/19
  */
 public class Sensor {
-    
+
     CarList list;
     boolean carOnSensor;
-    
+
     /**
      * Class Constructor.
      * @param q queue object
@@ -15,7 +15,7 @@ public class Sensor {
     public Sensor(CarList l) {
         list = l;
     }
-    
+
     /**
      * carPresent method.
      */
@@ -27,7 +27,7 @@ public class Sensor {
             carOnSensor = true;
         }
     }
-    
+
     /**
      * getCarOnsensor method.
      * @return carOnSensor

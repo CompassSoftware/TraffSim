@@ -4,7 +4,7 @@ public class Timer
     int time;
     //getter for timer remaining on timer
     Clock clock;
-    
+
     public Timer(int s, Clock clock)
     {
         time = s;

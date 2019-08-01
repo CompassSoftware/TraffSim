@@ -22,65 +22,65 @@ public class CarTest {
     PrintStream original;
 
     @BeforeEach
-    public void init() {
-        original = System.out;
-        lane = new Lane('E');
-        lane.list.add(new Car(lane));
-        car = new Car(lane);
-        out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-    }
+        public void init() {
+            original = System.out;
+            lane = new Lane('E');
+            lane.list.add(new Car(lane));
+            car = new Car(lane);
+            out = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(out));
+        }
 
     @AfterEach
-    public void end()
-    {
-        System.setOut(original);
-    }
+        public void end()
+        {
+            System.setOut(original);
+        }
 
 
     @Test
-    public void testStop()
-    {
-        car.stop();
-        assertEquals("The car has stopped at the " + car.getTag() + " intersection. The " + car.getTag()  + " Sensor has been notified\n" , out.toString());
-    }
+        public void testStop()
+        {
+            car.stop();
+            assertEquals("The car has stopped at the " + car.getTag() + " intersection. The " + car.getTag()  + " Sensor has been notified\n" , out.toString());
+        }
 
     @Test
-    public void testGo()
-    {
-        lane.setLight('G');
-        car = new Car(lane);
-        car.go();
-        assertEquals("The car approaches the " + car.getTag() + " lane of the intersection.\nThe car leaves the " + car.getTag() + " intersection.\n" , out.toString());
-    }
+        public void testGo()
+        {
+            lane.setLight('G');
+            car = new Car(lane);
+            car.go();
+            assertEquals("The car approaches the " + car.getTag() + " lane of the intersection.\nThe car leaves the " + car.getTag() + " intersection.\n" , out.toString());
+        }
 
     @Test
-    public void testMotion()
-    {
-        car.setMotion(false);
-        assertFalse(car.getMotion());
-    }
+        public void testMotion()
+        {
+            car.setMotion(false);
+            assertFalse(car.getMotion());
+        }
 
     @Test
-    public void testMotion1()
-    {
-        car.setMotion(true);
-        assertTrue(car.getMotion());
-    }
+        public void testMotion1()
+        {
+            car.setMotion(true);
+            assertTrue(car.getMotion());
+        }
 
     @Test
-    public void testSensor()
-    {
-        car.setSensor(false);
-        assertFalse(car.getSensor());
-    }
+        public void testSensor()
+        {
+            car.setSensor(false);
+            assertFalse(car.getSensor());
+        }
 
     @Test
-    public void testSensor1()
-    {
-        car.setSensor(true);
-        assertTrue(car.getSensor());
-    } 
+        public void testSensor1()
+        {
+            car.setSensor(true);
+            assertTrue(car.getSensor());
+        } 
 }
 
 

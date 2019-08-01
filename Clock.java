@@ -29,7 +29,7 @@ public class Clock {
      * @param sec seconds
      **/
     public void setSeconds(int sec) {
-        
+
         seconds += sec;
         setMinutes();
         setHours();
@@ -40,7 +40,7 @@ public class Clock {
      **/
     public void setMinutes() {
         if (seconds >= 60) {
-            
+
             minutes++;
             seconds = seconds - 60;
 
@@ -62,7 +62,7 @@ public class Clock {
      * @return time 
      **/
     public String toString() {
-        
+
         if (seconds < 10) {
             scnds = scnds.valueOf(seconds);
             scnds = "0" + scnds;
@@ -84,7 +84,7 @@ public class Clock {
         else { 
             hrs = hrs.valueOf(hours);
         }
-        
+
         return time = hrs + ":" + mnts + ":" + scnds;
     }
 }

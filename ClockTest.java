@@ -13,13 +13,13 @@ public class ClockTest {
     static Clock clock;
 
     @BeforeEach
-    void makeClock() {
-        clock = new Clock();
-    }
+        void makeClock() {
+            clock = new Clock();
+        }
 
     @Test
-    public void testClock() {
-        clock.setSeconds(80);
-        assertEquals("12:01:20", clock.toString());
-    }
+        public void testClock() {
+            clock.setSeconds(80);
+            assertEquals("12:01:20", clock.toString());
+        }
 }

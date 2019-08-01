@@ -3,52 +3,52 @@
  * 
  *
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
+ import static org.junit.jupiter.api.Assertions.assertEquals;
+ import org.junit.jupiter.api.Test;
+ import org.junit.jupiter.api.BeforeEach;
 
-public class ControllerTest {      
-     
-      static Controller controller;
-      static TrafficLight light;
-      static Lane[] lanes;
-      static Car car;
+ public class ControllerTest {      
 
-      @BeforeEach
-      void makeController()
-      {
-        lanes = new Lane[1];
-        lanes[0] = new Lane('E');
-        car = new Car(lanes[0])
-        controller = new Controller(lanes);
-        light = new TrafficLight();
-      }
+ static Controller controller;
+ static TrafficLight light;
+ static Lane[] lanes;
+ static Car car;
 
-      @Test
-      public void testlanesWithCar() 
-      {
-        int[] j;
-        boolean b = false;
-        lanes[0].addCar(car);
+ @BeforeEach
+ void makeController()
+ {
+ lanes = new Lane[1];
+ lanes[0] = new Lane('E');
+ car = new Car(lanes[0])
+ controller = new Controller(lanes);
+ light = new TrafficLight();
+ }
 
-        j = controller.lanesWithCar();
-        for (int i : j) {
-            if (j[i] != 0)
-        }
+ @Test
+ public void testlanesWithCar() 
+ {
+ int[] j;
+ boolean b = false;
+ lanes[0].addCar(car);
 
-        assertTrue();
-      }
-      
-      @Test
-      public void testLightNotify()
-      {
-        assertTrue(controller.isLightNotiy());
-      }
+ j = controller.lanesWithCar();
+ for (int i : j) {
+ if (j[i] != 0)
+ }
 
-      @Test
-      public void testSendNotifyLight(){
-         controller.sigLight(light, "yelllow");
-         assertEquals(light.getColor(), YELLOW);
-      }
-}*/
+ assertTrue();
+ }
+
+ @Test
+ public void testLightNotify()
+ {
+ assertTrue(controller.isLightNotiy());
+ }
+
+ @Test
+ public void testSendNotifyLight(){
+ controller.sigLight(light, "yelllow");
+ assertEquals(light.getColor(), YELLOW);
+ }
+ }*/
 

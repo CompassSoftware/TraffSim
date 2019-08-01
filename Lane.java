@@ -5,14 +5,14 @@
  *
  */
 public class Lane {
-    
+
     public CarList list;
     private TrafficLight light;
     private Sensor sense;
     private boolean car;
     private char tag;
     private char oppLaneTag;
-    
+
     /** 
      * This contructor takes in a paramater for the 
      * lane tag and sets variables equal to the results of prior methods.
@@ -28,7 +28,7 @@ public class Lane {
         setOppTag();
     }
 
-     /**
+    /**
      *
      * This method T/F if there is a car present.
      * 
@@ -41,11 +41,11 @@ public class Lane {
     }
 
     /**
-    * @param car which is a created object of the car class.
-    *
-    * This method adds a car object to the queue.
-    *
-    */
+     * @param car which is a created object of the car class.
+     *
+     * This method adds a car object to the queue.
+     *
+     */
     public void addCar(Car car) {
         list.add(car);
     }
@@ -57,7 +57,7 @@ public class Lane {
     public void removeCar() {
         list.remove();
     }
-    
+
     /**
      * This method changes the color of the light.
      * @param color - new color for light 
@@ -65,7 +65,7 @@ public class Lane {
     public void setLight(char color) {
         light.setColor(color);
     }
-    
+
     /**
      * This method gets the color of the light. 
      * 
@@ -75,7 +75,7 @@ public class Lane {
     public char getLight() {
         return light.getColor();
     }
-    
+
     /**
      * This method gets the tag variable which contains the lane name.
      * 
@@ -84,7 +84,7 @@ public class Lane {
     public char getTag() {
         return tag;
     }
-    
+
     /**
      * Retrieves light color in string form.
      * 
@@ -93,7 +93,7 @@ public class Lane {
     public String printLight() {
         return light.toString();
     }
-    
+
     /**
      * 
      * this method switches the tag to the opposite direction 
@@ -105,7 +105,7 @@ public class Lane {
         this.tag = tag;
         setOppTag();
     }
-    
+
     /**
      *
      * @return this method returns the opposite Lane tag of the current lane.
@@ -114,7 +114,7 @@ public class Lane {
     public char getOppTag() {
         return oppLaneTag;
     }
-    
+
     /**
      * This lane creates different scenarios in which 
      * every instance of the opposite lane is created.

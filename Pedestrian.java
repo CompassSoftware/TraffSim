@@ -10,19 +10,19 @@ public class Pedestrian {
     private boolean motion;
     private boolean wait;
     private String loc;
-    
+
     /**
-    *  Constructor returns a Pedestrian object with a direction set.
-    *
-    *  @param loc - direction the Pedestrian wishes to travel
-    */
+     *  Constructor returns a Pedestrian object with a direction set.
+     *
+     *  @param loc - direction the Pedestrian wishes to travel
+     */
     public Pedestrian(String loc) {
         //may need a class for crosswalks
         motion = false;
         wait = true;
         this.loc = loc;
     }
-    
+
     /**
      *  Orders the Pedestrian to stop and prints where they stopped.
      */
@@ -40,7 +40,7 @@ public class Pedestrian {
         setWait(false);
         System.out.print("Pedestrian crosses at the " + loc + " crosswalk");
     }
-    
+
     /**
      *  returns t/f if the pedestrian is in motion.
      *
@@ -58,7 +58,7 @@ public class Pedestrian {
     public void setMotion(boolean bool) {
         motion = bool;
     }
-    
+
     /**
      *  returns t/f if Pedestrian is at crosswalk or not.
      *
