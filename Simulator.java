@@ -91,6 +91,15 @@ public class Simulator{
                 System.out.print("[" + clock.toString() + "]");
                 intersectControl.printLights();
                 incGlobalTime = intersectControl.sendCar(laneToSend, clock);
+
+                    //Finds the first blank space in the lane, calls go to
+                    //move the cars up to it
+                    int carspot = 0;
+                    for(carspot; carspot < laneToSend.list.size() 
+                        && laneToSend.list.get(carspot).getReal(); carspot++)
+                    
+                    
+                    if(carspot > laneToSend.list.size()) eastCar.go();  
                 globalTimer.tick(tickTime + incGlobalTime);
                 //System.out.println();
             }

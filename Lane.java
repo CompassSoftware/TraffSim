@@ -8,7 +8,7 @@ public class Lane {
     
     public CarList list;
     private TrafficLight light;
-    private Sensor sense;
+    private Sensor sense;           //NOTE change to two sensors
     private boolean car;
     private char tag;
     private char oppLaneTag;
