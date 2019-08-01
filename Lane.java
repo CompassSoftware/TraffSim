@@ -48,10 +48,11 @@ public class Lane {
     */
     public void addCar(Car car) {
         list.add(car);
+        sense.set();
     }
 
     /**
-     * This method removes a car from the queue.
+     * This method removes a car from the list.
      *
      */
     public void removeCar() {
@@ -84,7 +85,9 @@ public class Lane {
     public char getTag() {
         return tag;
     }
-    
+   
+    public void advance() {
+    }     
     /**
      * Retrieves light color in string form.
      * 

@@ -36,5 +36,8 @@ public class Sensor {
         carPresent();
         return carOnSensor;
     }
-
+    
+    public void set() {
+        carOnSensor = true;
+    }
 }
