@@ -38,7 +38,7 @@ public class Clock {
     /**
      * setMinutes method.
      **/
-    public void setMinutes() {
+    private void setMinutes() {
         if (seconds >= 60) {
 
             minutes++;
@@ -50,7 +50,7 @@ public class Clock {
     /**
      * setHours method.
      **/
-    public void setHours() {
+    private void setHours() {
         if (minutes >= 60) {
 
             hours++;

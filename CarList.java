@@ -56,7 +56,31 @@ public class CarList {
             list.set(i, list.get(i+1));
         }
     }
+
+    /*
+     *  Method that will return CarList size
+     *
+     *  return - size of CarList
+     */
     public int size(){
         return list.size();
+<<<<<<< HEAD
+=======
+    }
+    
+    /*
+     * Uses arrayList method isEmpty 
+     *
+     *  return - returns true or false if the list has any cars
+     */
+    public boolean listFull() {
+       boolean b = false;
+
+       if (list.isEmpty()) {
+           b = true;
+       }
+
+       return b;
+>>>>>>> 8a7dfdb5b40859c450a163c0e5c66490b9bdfc35
     }
 }

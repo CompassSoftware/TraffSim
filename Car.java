@@ -10,6 +10,10 @@ public class Car {
     private boolean motion;
     private boolean onSensor;
     private Lane lane;
+<<<<<<< HEAD
+=======
+    private boolean real;
+>>>>>>> 8a7dfdb5b40859c450a163c0e5c66490b9bdfc35
 
     /**
      *  Car constructor takes a lane object and returns a car object.
@@ -20,8 +24,14 @@ public class Car {
         motion = true;
         onSensor = false;
         this.lane = lane;
+<<<<<<< HEAD
         System.out.println("The car approaches the "
                 + lane.getTag() + " lane of the intersection.");
+=======
+        if (real) System.out.println("The car approaches the "
+                + lane.getTag() + " lane of the intersection.");
+        real = true;
+>>>>>>> 8a7dfdb5b40859c450a163c0e5c66490b9bdfc35
     }
 
     /**
@@ -111,5 +121,21 @@ public class Car {
      */
     public void setLane(Lane lane) {
         this.lane = lane;
+    }
+
+    public void setReal(boolean real) {
+        this.real = real;
+    }
+
+    public boolean getReal() {
+        return real;
+    }
+
+    public Car copy(){
+        Car c = new Car(lane);
+        c.setMotion(motion);
+        c.setSensor(onSensor);
+        c.setReal(real);
+        return c;
     }
 }

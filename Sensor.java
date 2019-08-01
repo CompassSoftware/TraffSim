@@ -14,6 +14,7 @@ public class Sensor {
      */
     public Sensor(CarList l) {
         list = l;
+        carOnSensor = false;
     }
 
     /**
@@ -36,5 +37,8 @@ public class Sensor {
         carPresent();
         return carOnSensor;
     }
-
+    
+    public void set() {
+        carOnSensor = true;
+    }
 }
