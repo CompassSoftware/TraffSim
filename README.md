@@ -115,7 +115,9 @@ Sensor - Traffic lane sensor checks whether a car is present at the light.
 
 Simulator - Simulates traffic scenarios through class ojects.
 
-    main(String[] args) - Runs program through run methods.
+    main(String[] args) - Performs certain functions: run - No Car sim, 
+        run1 - Eastbound Car, help - Prints again, quit - Exits program, 
+        and Input Needed.
 
     run1(String[] args) - Runs the scenario of a car approaching from eastbound lane
         by using class objects and their methods.
