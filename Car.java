@@ -35,8 +35,8 @@ public class Car {
             setSensor(true);
             System.out.print("The car has stopped at the " 
                     + lane.getTag() + " intersection. ");
-            System.out.println("The " + lane.getTag() 
-                    + " Sensor has been notified");
+            System.out.print("The " + lane.getTag() 
+                    + " Sensor has been notified\n");
         }
     }
 
@@ -44,7 +44,7 @@ public class Car {
      *  Go orders the car to leave the intersection and tells where it goes.
      */
     public void go(int carspot) {
-        
+
         if (lane.getLight() == 'G' || lane.getLight() == 'Y') {
             setMotion(true);
             setSensor(false);
