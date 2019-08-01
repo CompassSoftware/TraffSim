@@ -52,14 +52,13 @@ public class CarList {
      * NOTE: The head is overwritten, it must be handled beforehand
      */
     
-    /*public void advance(Car c){
+    /*public void advance(){
         for (int i = 0; i < list.size() - 1; i++){
             list.set(i, list.get(i+1));
         }
-
-        list.size() - 1 = c;
-    }
-    */
+        
+        list.size() - 1 = c
+    }*/
 
     /*
      *  Method that will return CarList size
