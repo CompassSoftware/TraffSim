@@ -45,6 +45,10 @@ public class CarList {
         list.add(c);
     }
 
+    public Car get(int i){
+        return list.get(i);
+    }
+
     public ArrayList getList() {
         return list;
     }
