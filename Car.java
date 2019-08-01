@@ -43,13 +43,19 @@ public class Car {
     /**
      *  Go orders the car to leave the intersection and tells where it goes.
      */
-    public void go() {
-        if (lane.getLight() == 'G') {
+    public void go(int carspot) {
+        
+        if (lane.getLight() == 'G' || lane.getLight() == 'Y') {
             setMotion(true);
             setSensor(false);
             System.out.println("The car leaves the " 
                     + lane.getTag()  + " intersection.");
             lane.list.remove();
+        }
+        else{
+            setMotion(true);
+            setSensor(false);
+            lane.list.remove(carspot);
         }
     }
 

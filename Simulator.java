@@ -63,15 +63,15 @@ public class Simulator{
         nonSouthCar.setReal(false);
         nonNorthCar.setReal(false);
 
-        lanes[0].addCar(nonNorthCar); // puts an empty car into each lane
-        lanes[1].addCar(nonWestCar);
-        lanes[2].addCar(nonSouthCar);
-        //lanes[3].addCar(nonEastCar);
+        for(int i = 0; i < 4; i++) lanes[0].addCar(nonNorthCar); // puts 4 empty cars into each lane
+        for(int i = 0; i < 4; i++) lanes[1].addCar(nonWestCar);
+        for(int i = 0; i < 4; i++) lanes[2].addCar(nonSouthCar);
+        for(int i = 0; i < 4; i++) lanes[3].addCar(nonEastCar);
 
         Car eastCar = new Car(lanes[3]);
-        //Car northCar = new Car(lanes[0]);
-        lanes[3].addCar(eastCar);
-        //lanes[0].list.add(northCar);
+        Car northCar = new Car(lanes[0]);
+        lanes[3].addCar(eastCar);           
+        lanes[0].addCar(northCar);
 
 
         Clock clock = new Clock();       
@@ -91,6 +91,15 @@ public class Simulator{
                 System.out.print("[" + clock.toString() + "]");
                 intersectControl.printLights();
                 incGlobalTime = intersectControl.sendCar(laneToSend, clock);
+
+                    //Finds the first blank space in the lane, calls go to
+                    //move the cars up to it
+                    int carspot = 0;
+                    for(carspot; carspot < laneToSend.list.size() 
+                        && laneToSend.list.get(carspot).getReal(); carspot++)
+                    
+                    
+                    if(carspot > laneToSend.list.size()) eastCar.go();  
                 globalTimer.tick(tickTime + incGlobalTime);
                 //System.out.println();
             }

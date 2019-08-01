@@ -51,11 +51,15 @@ public class CarList {
      * Moves every car in the list 1 closer to the head.
      * NOTE: The head is overwritten, it must be handled beforehand
      */
-    public void advance(){
+    
+    /*public void advance(Car c){
         for (int i = 0; i < list.size() - 1; i++){
             list.set(i, list.get(i+1));
         }
+
+        list.size() - 1 = c;
     }
+    */
 
     /*
      *  Method that will return CarList size
