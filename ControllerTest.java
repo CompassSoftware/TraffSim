@@ -1,54 +1,43 @@
 /** 
  * JUnit5 test class
  * 
- *
+ */
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 public class ControllerTest {      
      
       static Controller controller;
-      static TrafficLight light;
       static Lane[] lanes;
       static Car car;
+      ByteArrayOutputStream out;
+      PrintStream original;
 
       @BeforeEach
       void makeController()
       {
-        lanes = new Lane[1];
-        lanes[0] = new Lane('E');
-        car = new Car(lanes[0])
-        controller = new Controller(lanes);
-        light = new TrafficLight();
+    	  original = System.out;
+    	  lanes = new Lane[3];
+    	  lanes[0] = new Lane('E');
+    	  car = new Car(lanes[0]);
+    	  lanes[0].addCar(car);;
+    	  controller = new Controller(lanes);
       }
 
       @Test
-      public void testlanesWithCar() 
-      {
-        int[] j;
-        boolean b = false;
-        lanes[0].addCar(car);
-
-        j = controller.lanesWithCar();
-        for (int i : j) {
-            if (j[i] != 0)
-        }
-
-        assertTrue();
+      public void testlanes() {
+    	  
+    	  if (controller.getLane()[0] == 1) {
+    		  assertTrue(true);
+    	  }
+    	  else {
+    		  assertFalse(false);
+    	  }
       }
-      
-      @Test
-      public void testLightNotify()
-      {
-        assertTrue(controller.isLightNotiy());
-      }
-
-      @Test
-      public void testSendNotifyLight(){
-         controller.sigLight(light, "yelllow");
-         assertEquals(light.getColor(), YELLOW);
-      }
-}*/
+}
 
