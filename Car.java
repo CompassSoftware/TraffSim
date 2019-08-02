@@ -41,23 +41,26 @@ public class Car {
     }
 
     /**
-     *  Go orders the car to leave the intersection and tells where it goes.
+     *  Go either orders the car to leave the intersection and tells where it goes,
+     *  or tells it to move forward in the lane if it can.
      */
     public void go(int carspot) {
 
         if (lane.getLight() == 'G' || lane.getLight() == 'Y') {
             setMotion(true);
             setSensor(false);
+            if (real){
             System.out.println("The car leaves the " 
                     + lane.getTag()  + " intersection.");
+            }
             lane.list.remove();
         }
         else{
             setMotion(true);
             setSensor(false);
             //dont remove if no empty spot was found
-            if (carspot == lane.list.size() - 1);
-            lane.list.remove(carspot);
+            if (carspot < lane.list.size())
+                lane.list.remove(carspot);
         }
     }
 

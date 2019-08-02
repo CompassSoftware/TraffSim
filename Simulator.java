@@ -75,7 +75,7 @@ public class Simulator{
 
 
         Clock clock = new Clock();       
-        Timer globalTimer = new Timer(35);
+        Timer globalTimer = new Timer(100);
         int tickTime = 1;
         int[] lanesWithCar;
         System.out.print("[" + clock.toString() + "] ");
@@ -84,7 +84,7 @@ public class Simulator{
         //globaltimer to stop program, otherwise runs regardless of the amount of cars remaining
 
         lanesWithCar = intersectControl.getLane();
-
+        int currlane = 0;
         while(globalTimer.getTime() > 0){
             for (int laneToSend : lanesWithCar){
                 clock.setSeconds(tickTime);
@@ -92,22 +92,26 @@ public class Simulator{
                 intersectControl.printLights();
                 incGlobalTime = intersectControl.sendCar(laneToSend, clock);
 
-
+                CarList list = lanes[currlane].list; 
+                if (list.size() > 0){           
+                    Car currCar = list.peek();
                     //Finds the first blank space in the lane, calls go to
                     //move the cars up to it
-                    int carspot = 0;
-                    for(carspot = 0; carspot < lanes[laneToSend].list.size() 
-                        && lanes[laneToSend].list.get(carspot).getReal(); carspot++)
-                    
-                    //logic in car.go should handle every permutation for this call
-                    eastCar.go(carspot);
+                    int blankcar = 0;
+                    for(blankcar = 0; blankcar < list.size() && list.get(blankcar).getReal(); blankcar++);
 
+                    //logic in car.go should handle every permutation for this call
+                    currCar.go(blankcar);
+                }
                 globalTimer.tick(tickTime + incGlobalTime);
                 //System.out.println();
+
             }
-            System.out.println("No more cars on intersection");
-            System.out.println("\t\t***Simulation Concluded***");
+            currlane = (currlane + 1) % 4;
         }
+
+        System.out.println("No more cars on intersection");
+        System.out.println("\t\t***Simulation Concluded***");
     }
 
     public static void run (String[] args){
