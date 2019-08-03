@@ -21,7 +21,10 @@ public class Sensor {
      * carPresent method.
      */
     private void carPresent() {
-        if (!list.peek().getReal()) {
+        if (list.isEmpty()){
+            carOnSensor = false;
+        }
+        else if (!list.peek().getReal()) {
             carOnSensor = false;
         }
         else {

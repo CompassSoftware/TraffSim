@@ -79,6 +79,10 @@ public class CarList {
         return list.size();
     }
     
+    public boolean isEmpty(){
+        return list.isEmpty();
+    }
+    
     /*
      * Uses arrayList method isEmpty 
      *

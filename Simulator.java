@@ -75,7 +75,7 @@ public class Simulator{
 
 
         Clock clock = new Clock();       
-        Timer globalTimer = new Timer(100);
+        Timer globalTimer = new Timer(35);
         int tickTime = 1;
         int[] lanesWithCar;
         System.out.print("[" + clock.toString() + "] ");
@@ -86,28 +86,37 @@ public class Simulator{
         lanesWithCar = intersectControl.getLane();
         int currlane = 0;
         while(globalTimer.getTime() > 0){
-            for (int laneToSend : lanesWithCar){
-                clock.setSeconds(tickTime);
-                System.out.print("[" + clock.toString() + "]");
-                intersectControl.printLights();
-                incGlobalTime = intersectControl.sendCar(laneToSend, clock);
+            Lane perplane1 = lanes[(currlane + 1) % 4];
+            Lane perplane2 = lanes[(currlane + 3) % 4]; 
 
-                CarList list = lanes[currlane].list; 
-                if (list.size() > 0){           
-                    Car currCar = list.peek();
-                    //Finds the first blank space in the lane, calls go to
-                    //move the cars up to it
-                    int blankcar = 0;
-                    for(blankcar = 0; blankcar < list.size() && list.get(blankcar).getReal(); blankcar++);
 
-                    //logic in car.go should handle every permutation for this call
-                    currCar.go(blankcar);
+            if ((lanes[currlane].carOnSensor()) || 
+                    ((!perplane1.carOnSensor() && !perplane2.carOnSensor()))){
+                for (int laneToSend : lanesWithCar){
+                    clock.setSeconds(tickTime);
+                    System.out.print("[" + clock.toString() + "]");
+                    intersectControl.printLights();
+                    incGlobalTime = intersectControl.sendCar(laneToSend, clock);
+
+                    CarList list = lanes[currlane].list;
+                    if (list.size() > 0){           
+
+                        Car currCar = list.peek();
+                        //Finds the first blank space in the lane, calls go to
+                        //move the cars up to it
+                        int blankcar = 0;
+                        for(blankcar = 0; blankcar < list.size() && list.get(blankcar).getReal(); blankcar++);
+
+                        //logic in car.go should handle every permutation for this call
+                        currCar.go(blankcar);
+                    }
                 }
                 globalTimer.tick(tickTime + incGlobalTime);
                 //System.out.println();
 
-            }
+}            
             currlane = (currlane + 1) % 4;
+
         }
 
         System.out.println("No more cars on intersection");
