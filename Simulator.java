@@ -75,7 +75,7 @@ public class Simulator{
 
 
         Clock clock = new Clock();       
-        Timer globalTimer = new Timer(35);
+        Timer globalTimer = new Timer(5);
         int tickTime = 1;
         int[] lanesWithCar;
         System.out.print("[" + clock.toString() + "] ");
@@ -84,40 +84,37 @@ public class Simulator{
         //globaltimer to stop program, otherwise runs regardless of the amount of cars remaining
 
         lanesWithCar = intersectControl.getLane();
-        int currlane = 0;
+
         while(globalTimer.getTime() > 0){
-            Lane perplane1 = lanes[(currlane + 1) % 4];
-            Lane perplane2 = lanes[(currlane + 3) % 4]; 
 
+            for (int laneToSend : lanesWithCar){
+                clock.setSeconds(tickTime);
+                System.out.print("[" + clock.toString() + "]");
+                intersectControl.printLights();
+                incGlobalTime = intersectControl.sendCar(laneToSend, clock);
 
-            if ((lanes[currlane].carOnSensor()) || 
-                    ((!perplane1.carOnSensor() && !perplane2.carOnSensor()))){
-                for (int laneToSend : lanesWithCar){
-                    clock.setSeconds(tickTime);
-                    System.out.print("[" + clock.toString() + "]");
-                    intersectControl.printLights();
-                    incGlobalTime = intersectControl.sendCar(laneToSend, clock);
+                /*Looks at every lane with size > 0*/
+                int[] lanesNotEmpty = intersectControl.lanesNotEmpty();
+                for (int currlane : lanesNotEmpty){
+                    if (currlane != -1){
 
-                    CarList list = lanes[currlane].list;
-                    if (list.size() > 0){           
-
-                        Car currCar = list.peek();
-                        //Finds the first blank space in the lane, calls go to
-                        //move the cars up to it
+                        CarList list = lanes[currlane].list;
                         int blankcar = 0;
                         for(blankcar = 0; blankcar < list.size() && list.get(blankcar).getReal(); blankcar++);
 
                         //logic in car.go should handle every permutation for this call
-                        currCar.go(blankcar);
+                        list.peek().go(blankcar);                   
                     }
                 }
-                globalTimer.tick(tickTime + incGlobalTime);
-                //System.out.println();
 
-}            
-            currlane = (currlane + 1) % 4;
+            }
+            globalTimer.tick(tickTime + incGlobalTime);
+            //System.out.println();
 
-        }
+        }            
+
+
+
 
         System.out.println("No more cars on intersection");
         System.out.println("\t\t***Simulation Concluded***");

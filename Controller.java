@@ -45,8 +45,10 @@ public class Controller{
      */
     public void lanesWithCar(){
         for (int i = 0; i < lanes.length; i++){
-            if (lanes[i].list.size() > 0 && lanes[i].list.peek().getReal())
-                if (lanes[i].carOnSensor()){ // if a car is on a sensor, add it to the set of lanes with with cars at light.
+            if (lanes[i].list.size() > 0 /*&& lanes[i].list.peek().getReal()*/){
+                // if a car is on a sensor, add it to the set of lanes with with cars at light.
+
+                if (lanes[i].carOnSensor()){ 
                     System.out.println("Controller notified that " + lanes[i].getTag() + " lane has a sensor that has been set off");
 
                     int j = 0;
@@ -56,7 +58,24 @@ public class Controller{
                     }
                     laneWithCar[j] = i;
                 }
+
+            }
         }
+    }
+
+    public int[] lanesNotEmpty(){
+        int[] lanesNotEmpty = new int[lanes.length];
+        Arrays.fill(lanesNotEmpty, -1);
+        for(int i = 0; i < lanes.length; i++){
+            if (lanes[i].list.size() > 0){
+                int j = 0;
+                for (j = 0; j < lanesNotEmpty.length && lanesNotEmpty[j] != -1; j++);
+
+                    lanesNotEmpty[j] = i;
+            }
+
+        }
+        return lanesNotEmpty;
     }
 
     /*
@@ -66,10 +85,11 @@ public class Controller{
      * @param laneToSend Lane that needs to be sent by changing light to green.
      */
     public int sendCar(int laneToSend, Clock clock) {
+
         boolean changed = false;
         Lane redLane = lanes[0];
         int incGlobalTime = 0;
-        if (minTimer.getTime() <= 0 && laneToSend != -1){
+        if (minTimer.getTime() <= 2 && laneToSend != -1){
             if( lanes[laneToSend].getLight() != 'G') {
                 for (Lane l : lanes) {
                     if (l.getLight() == 'G') {
@@ -102,6 +122,7 @@ public class Controller{
             minTimer.setTime(MINTIME);
             maxTimer.setTime(MAXTIME);
         }
+
         if (maxTimer.getTime() <= 2){
             incGlobalTime++;
             for (Lane l : lanes){
@@ -155,9 +176,9 @@ public class Controller{
         }
         System.out.println();
     }
-    
+
     public int[] getLane() {
-    	return laneWithCar;
+        return laneWithCar;
     }
 }
 
