@@ -35,8 +35,18 @@ public class CarList {
         return car;
     }
 
+    public Car remove(int i){
+    Car car = list.get(i);
+    list.remove(i);
+    return car;
+    }
+
     public void add(Car c) {
         list.add(c);
+    }
+
+    public Car get(int i){
+        return list.get(i);
     }
 
     public ArrayList getList() {
@@ -52,14 +62,13 @@ public class CarList {
      * NOTE: The head is overwritten, it must be handled beforehand
      */
     
-    /*public void advance(Car c){
+    /*public void advance(){
         for (int i = 0; i < list.size() - 1; i++){
             list.set(i, list.get(i+1));
         }
-
-        list.size() - 1 = c;
-    }
-    */
+        
+        list.size() - 1 = c
+    }*/
 
     /*
      *  Method that will return CarList size
@@ -68,6 +77,10 @@ public class CarList {
      */
     public int size(){
         return list.size();
+    }
+    
+    public boolean isEmpty(){
+        return list.isEmpty();
     }
     
     /*
