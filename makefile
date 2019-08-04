@@ -25,7 +25,7 @@ test: compile $(JUNIT5_JAR)
 run:
 	make clean
 	make 
-	java Simulator
+	java Simulator > out.txt
 
 begin:
 	make compile

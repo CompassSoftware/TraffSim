@@ -1,0 +1,74 @@
+run - No Car sim
+run1 - Eastbound Car (issue 1)
+help - Print again
+quit - Exits program
+
+Input Needed: 		***This is a simulation of a 4-way intersection w/ no cars.***
+[12:00:00] 	N Green	W Red	S Green	E Red
+[12:00:01]	N Green	W Red	S Green	E Red
+[12:00:02]	N Green	W Red	S Green	E Red
+[12:00:03]	N Green	W Red	S Green	E Red
+[12:00:04]	N Green	W Red	S Green	E Red
+[12:00:05]	N Green	W Red	S Green	E Red
+[12:00:06]	N Green	W Red	S Green	E Red
+[12:00:07]	N Green	W Red	S Green	E Red
+[12:00:08]	N Green	W Red	S Green	E Red
+[12:00:09]	N Green	W Red	S Green	E Red
+[12:00:10]	N Green	W Red	S Green	E Red
+[12:00:11]	N Green	W Red	S Green	E Red
+[12:00:12]Lights notified to change
+	N Yellow	W Red	S Yellow	E Red
+[12:00:13]Lights notified to change
+	N Red	W Red	S Red	E Red
+[12:00:14]Lights notified to change
+	N Red	W Green	S Red	E Green
+[12:00:15]	N Red	W Green	S Red	E Green
+[12:00:16]	N Red	W Green	S Red	E Green
+[12:00:17]	N Red	W Green	S Red	E Green
+[12:00:18]	N Red	W Green	S Red	E Green
+[12:00:19]	N Red	W Green	S Red	E Green
+[12:00:20]	N Red	W Green	S Red	E Green
+[12:00:21]	N Red	W Green	S Red	E Green
+[12:00:22]	N Red	W Green	S Red	E Green
+[12:00:23]	N Red	W Green	S Red	E Green
+[12:00:24]	N Red	W Green	S Red	E Green
+[12:00:25]	N Red	W Green	S Red	E Green
+[12:00:26]Lights notified to change
+	N Red	W Yellow	S Red	E Yellow
+[12:00:27]Lights notified to change
+	N Red	W Red	S Red	E Red
+[12:00:28]Lights notified to change
+	N Green	W Red	S Green	E Red
+[12:00:29]	N Green	W Red	S Green	E Red
+[12:00:30]	N Green	W Red	S Green	E Red
+[12:00:31]	N Green	W Red	S Green	E Red
+[12:00:32]	N Green	W Red	S Green	E Red
+[12:00:33]	N Green	W Red	S Green	E Red
+[12:00:34]	N Green	W Red	S Green	E Red
+		***Simulation Concluded***
+run - No Car sim
+run1 - Eastbound Car (issue 1)
+help - Print again
+quit - Exits program
+
+Input Needed: run - No Car sim
+run1 - Eastbound Car (issue 1)
+help - Print again
+quit - Exits program
+
+Input Needed: run - No Car sim
+run1 - Eastbound Car (issue 1)
+help - Print again
+quit - Exits program
+
+Input Needed: run - No Car sim
+run1 - Eastbound Car (issue 1)
+help - Print again
+quit - Exits program
+
+Input Needed: run - No Car sim
+run1 - Eastbound Car (issue 1)
+help - Print again
+quit - Exits program
+
+Input Needed: 
