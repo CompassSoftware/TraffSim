@@ -1,4 +1,7 @@
 import java.util.Arrays;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
 /**
  * Controller Class.
  * 
@@ -14,8 +17,7 @@ import java.util.Arrays;
 public class Controller{
     public static final int MINTIME = 2;
     public static final int MAXTIME = 12;
-
-
+    public PrintWriter out;
     private Timer minTimer;
     private Timer maxTimer;
     private Lane[] lanes;
@@ -84,10 +86,11 @@ public class Controller{
      * @param laneToSend Lane that needs to be sent by changing light to green.
      */
     public int sendCar(int laneToSend, Clock clock) {
-
+        int incGlobalTime = 0;
+        try {
+            out = new PrintWriter("out.txt");
         boolean changed = false;
         Lane redLane = lanes[0];
-        int incGlobalTime = 0;
         if (minTimer.getTime() <= 0 && laneToSend != -1){
             if( lanes[laneToSend].getLight() != 'G') {
                 for (Lane l : lanes) {
@@ -103,7 +106,7 @@ public class Controller{
                     incGlobalTime++;
                 	minTimer.setTime(MINTIME);
                     maxTimer.setTime(MAXTIME + 1);
-                    System.out.println("Lights notified to change");
+                    out.println("Lights notified to change");
                     printLights();
                 }
 
@@ -116,7 +119,7 @@ public class Controller{
                 	minTimer.setTime(MINTIME);
                     maxTimer.setTime(MAXTIME + 1);
 
-                    System.out.println("Lights notified to change");
+                    out.println("Lights notified to change");
                     printLights();
 
                 }
@@ -126,7 +129,7 @@ public class Controller{
             for (Lane l : lanes)
                 if (lanes[laneToSend].getTag() == l.getTag()
                         || lanes[laneToSend].getOppTag() == l.getTag()) l.setLight('G');
-            System.out.println("Lights notified to change");
+            out.println("Lights notified to change");
             printLights();
             minTimer.setTime(MINTIME);
             maxTimer.setTime(MAXTIME);
@@ -144,8 +147,8 @@ public class Controller{
             if (changed) {
                 clock.setSeconds(1);
                 incGlobalTime++;                
-                System.out.print("[" + clock.toString() + "]");
-                System.out.println("Lights notified to change");
+                out.print("[" + clock.toString() + "]");
+                out.println("Lights notified to change");
                 printLights();
             }
             for (Lane l : lanes)
@@ -153,8 +156,8 @@ public class Controller{
             if (changed){
                 clock.setSeconds(1);
                 incGlobalTime++;    
-                System.out.print("[" + clock.toString() + "]");
-                System.out.println("Lights notified to change");
+                out.print("[" + clock.toString() + "]");
+                out.println("Lights notified to change");
                 printLights();
 
             }
@@ -163,8 +166,8 @@ public class Controller{
             for(Lane l : lanes) if (redLane.getOppTag() == l.getTag()) l.setLight('G');
             clock.setSeconds(1);
             incGlobalTime++;    
-            System.out.print("[" + clock.toString() + "]");
-            System.out.println("Lights notified to change");
+            out.print("[" + clock.toString() + "]");
+            out.println("Lights notified to change");
             printLights();
             minTimer.setTime(MINTIME);
             maxTimer.setTime(MAXTIME + 1);
@@ -172,6 +175,9 @@ public class Controller{
         }
         minTimer.tick(1);
         maxTimer.tick(1);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         return incGlobalTime;
     }
 
@@ -180,10 +186,15 @@ public class Controller{
      * Method that prints the states of each lanes light.
      */
     public void printLights() {
+        try {
+            out = new PrintWriter("out.txt");
         for (Lane l : lanes) {
-            System.out.print("\t" + l.getTag() + " " + l.printLight());
+            out.print("\t" + l.getTag() + " " + l.printLight());
         }
-        System.out.println();
+        out.println();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public int[] getLane() {
