@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 public class Simulator{
 
@@ -32,6 +34,7 @@ public class Simulator{
 
 
     public static void run1(String [] args){
+            
         System.out.println("\t\t***This is a Simulation of an Eastbound Car moving into a 4-way intersection***");
         //Set up all lanes and controller, north and south lanes start as green
 
@@ -121,7 +124,11 @@ public class Simulator{
     }
 
     public static void run (String[] args){
-        System.out.println("\t\t***This is a simulation of a 4-way intersection w/ no cars.***");
+        String file = "out.txt";
+        try { 
+        PrintWriter outfile = new PrintWriter(file);
+        
+        outfile.println("\t\t***This is a simulation of a 4-way intersection w/ no cars.***");
 
         //Set up all lanes and controller, north and south lanes start as green
 
@@ -168,7 +175,7 @@ public class Simulator{
         Timer globalTimer = new Timer(35);
         int tickTime = 1;
         int[] lanesWithCar;
-        System.out.print("[" + clock.toString() + "] ");
+        outfile.print("[" + clock.toString() + "] ");
         intersectControl.printLights();
         int incGlobalTime = 0;
         //globaltimer to stop program, otherwise runs regardless of the amount of cars remaining
@@ -178,13 +185,18 @@ public class Simulator{
         while(globalTimer.getTime() > 0){
             for (int laneToSend : lanesWithCar){
                 clock.setSeconds(tickTime);
-                System.out.print("[" + clock.toString() + "]");
+                outfile.print("[" + clock.toString() + "]");
                 intersectControl.printLights();
                 incGlobalTime = intersectControl.sendCar(laneToSend, clock);
                 globalTimer.tick(tickTime + incGlobalTime);
                 //System.out.println();
             }
         }
-        System.out.println("\t\t***Simulation Concluded***");
+        outfile.println("\t\t***Simulation Concluded***");
+        outfile.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 }
