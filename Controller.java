@@ -98,6 +98,9 @@ public class Controller{
                 }
 
                 if (changed) {
+                    incGlobalTime++;
+                    clock.setSeconds(1);
+                    System.out.print("[" + clock.toString() + "]");
                     System.out.println("Lights notified to change");
                     printLights();
                 }
@@ -105,6 +108,9 @@ public class Controller{
                 for (Lane l : lanes)
                     if (l.getLight() == 'Y') l.setLight('R');
                 if (changed){
+                    incGlobalTime++;
+                    clock.setSeconds(1);
+                    System.out.print("[" + clock.toString() + "]");
                     System.out.println("Lights notified to change");
                     printLights();
 
