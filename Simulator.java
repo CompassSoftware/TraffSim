@@ -119,12 +119,11 @@ public class Simulator{
     }
 
     public static void run (String[] args){
-        String file = "out.txt";
-        try { 
-        PrintWriter outfile = new PrintWriter(file);
-        
-        outfile.println("\t\t***This is a simulation of a 4-way intersection w/ no cars.***");
-
+        //Controller intersectControl;
+        try {
+        String file = "out.txt"; 
+        PrintWriter out = new PrintWriter(file);
+        out.println("\t\t***This is a simulation of a 4-way intersection w/ no cars.***");
         //Set up all lanes and controller, north and south lanes start as green
 
         Lane[] lanes = new Lane[4];
@@ -170,7 +169,7 @@ public class Simulator{
         Timer globalTimer = new Timer(35);
         int tickTime = 1;
         int[] lanesWithCar;
-        outfile.print("[" + clock.toString() + "] ");
+        out.print("[" + clock.toString() + "] ");
         intersectControl.printLights();
         int incGlobalTime = 0;
         //globaltimer to stop program, otherwise runs regardless of the amount of cars remaining
@@ -180,18 +179,17 @@ public class Simulator{
         while(globalTimer.getTime() > 0){
             for (int laneToSend : lanesWithCar){
                 clock.setSeconds(tickTime);
-                outfile.print("[" + clock.toString() + "]");
+                out.print("[" + clock.toString() + "]");
                 intersectControl.printLights();
                 incGlobalTime = intersectControl.sendCar(laneToSend, clock);
                 globalTimer.tick(tickTime + incGlobalTime);
-                //System.out.println();
+                out.println(); //was commented out
             }
         }
-        outfile.println("\t\t***Simulation Concluded***");
-        outfile.close();
+        out.println("\t\t***Simulation Concluded***");
+        out.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
     }
 }
