@@ -46,7 +46,7 @@ public class Controller{
         for (int i = 0; i < lanes.length; i++){
             if (lanes[i].list.size() > 0){
                 // if a car is on a sensor, add it to the set of lanes with with cars at light.
-System.out.println("VVVVVV");
+            	System.out.println("VVVVVV");
                 if (lanes[i].carOnSensor()){ 
                     System.out.println("Controller notified that " + lanes[i].getTag() + " lane has a sensor that has been set off");
 
