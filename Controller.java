@@ -98,6 +98,7 @@ public class Controller{
                 }
 
                 if (changed) {
+
                 	clock.setSeconds(1);
                     incGlobalTime++;
                 	minTimer.setTime(MINTIME);
@@ -109,10 +110,12 @@ public class Controller{
                 for (Lane l : lanes)
                     if (l.getLight() == 'Y') l.setLight('R');
                 if (changed){
+
                 	clock.setSeconds(1);
                     incGlobalTime++;
                 	minTimer.setTime(MINTIME);
                     maxTimer.setTime(MAXTIME + 1);
+
                     System.out.println("Lights notified to change");
                     printLights();
 
