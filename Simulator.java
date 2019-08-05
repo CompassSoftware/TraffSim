@@ -111,7 +111,7 @@ public class Simulator{
 
 
 
-        System.out.println("No more cars on intersection");
+        //System.out.println("No more cars on intersection");
         System.out.println("\t\t***Simulation Concluded***");
     }
 

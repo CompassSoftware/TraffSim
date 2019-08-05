@@ -44,7 +44,7 @@ public class Controller{
      */
     public void lanesWithCar(){
         for (int i = 0; i < lanes.length; i++){
-            if (lanes[i].list.size() > 0 /*&& lanes[i].list.peek().getReal()*/){
+            if (lanes[i].list.size() > 0 && lanes[i].list.peek().getReal()){
                 // if a car is on a sensor, add it to the set of lanes with with cars at light.
 
                 if (lanes[i].carOnSensor()){ 
@@ -88,7 +88,7 @@ public class Controller{
         boolean changed = false;
         Lane redLane = lanes[0];
         int incGlobalTime = 0;
-        if (minTimer.getTime() <= 2 && laneToSend != -1){
+        if (minTimer.getTime() <= 0 && laneToSend != -1){
             if( lanes[laneToSend].getLight() != 'G') {
                 for (Lane l : lanes) {
                     if (l.getLight() == 'G') {
@@ -98,9 +98,11 @@ public class Controller{
                 }
 
                 if (changed) {
+
+                	clock.setSeconds(1);
                     incGlobalTime++;
-                    clock.setSeconds(1);
-                    System.out.print("[" + clock.toString() + "]");
+                	minTimer.setTime(MINTIME);
+                    maxTimer.setTime(MAXTIME + 1);
                     System.out.println("Lights notified to change");
                     printLights();
                 }
@@ -108,9 +110,12 @@ public class Controller{
                 for (Lane l : lanes)
                     if (l.getLight() == 'Y') l.setLight('R');
                 if (changed){
+
+                	clock.setSeconds(1);
                     incGlobalTime++;
-                    clock.setSeconds(1);
-                    System.out.print("[" + clock.toString() + "]");
+                	minTimer.setTime(MINTIME);
+                    maxTimer.setTime(MAXTIME + 1);
+
                     System.out.println("Lights notified to change");
                     printLights();
 
@@ -121,7 +126,6 @@ public class Controller{
             for (Lane l : lanes)
                 if (lanes[laneToSend].getTag() == l.getTag()
                         || lanes[laneToSend].getOppTag() == l.getTag()) l.setLight('G');
-
             System.out.println("Lights notified to change");
             printLights();
             minTimer.setTime(MINTIME);
@@ -139,7 +143,7 @@ public class Controller{
             }
             if (changed) {
                 clock.setSeconds(1);
-                incGlobalTime++;    
+                incGlobalTime++;                
                 System.out.print("[" + clock.toString() + "]");
                 System.out.println("Lights notified to change");
                 printLights();
