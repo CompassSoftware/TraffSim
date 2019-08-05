@@ -44,9 +44,9 @@ public class Controller{
      */
     public void lanesWithCar(){
         for (int i = 0; i < lanes.length; i++){
-            if (lanes[i].list.size() > 0 && lanes[i].list.peek().getReal()){
+            if (lanes[i].list.size() > 0){
                 // if a car is on a sensor, add it to the set of lanes with with cars at light.
-
+System.out.println("VVVVVV");
                 if (lanes[i].carOnSensor()){ 
                     System.out.println("Controller notified that " + lanes[i].getTag() + " lane has a sensor that has been set off");
 
@@ -98,11 +98,8 @@ public class Controller{
                 }
 
                 if (changed) {
-
                 	clock.setSeconds(1);
                     incGlobalTime++;
-                	minTimer.setTime(MINTIME);
-                    maxTimer.setTime(MAXTIME + 1);
                     System.out.println("Lights notified to change");
                     printLights();
                 }
@@ -113,9 +110,6 @@ public class Controller{
 
                 	clock.setSeconds(1);
                     incGlobalTime++;
-                	minTimer.setTime(MINTIME);
-                    maxTimer.setTime(MAXTIME + 1);
-
                     System.out.println("Lights notified to change");
                     printLights();
 
@@ -128,8 +122,8 @@ public class Controller{
                         || lanes[laneToSend].getOppTag() == l.getTag()) l.setLight('G');
             System.out.println("Lights notified to change");
             printLights();
-            minTimer.setTime(MINTIME);
-            maxTimer.setTime(MAXTIME);
+            minTimer.setTime(MINTIME + 1);
+            maxTimer.setTime(MAXTIME + 1);
         }
 
         if (maxTimer.getTime() <= 2){

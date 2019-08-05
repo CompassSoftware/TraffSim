@@ -42,7 +42,7 @@ public class Simulator{
         lanes[1].setTag('W');
         lanes[2].setTag('S');
         lanes[3].setTag('E');
-        Controller intersectControl = new Controller(lanes);
+
         lanes[0].setLight('G');
         lanes[2].setLight('G');
 
@@ -68,7 +68,7 @@ public class Simulator{
         lanes[3].addCar(eastCar);           
         lanes[0].addCar(northCar);
 
-
+        Controller intersectControl = new Controller(lanes);
         Clock clock = new Clock();       
         Timer globalTimer = new Timer(5);
         int tickTime = 1;
@@ -86,6 +86,7 @@ public class Simulator{
                 clock.setSeconds(tickTime);
                 System.out.print("[" + clock.toString() + "]");
                 intersectControl.printLights();
+                
                 incGlobalTime = intersectControl.sendCar(laneToSend, clock);
 
                 /*Looks at every lane with size > 0*/
@@ -101,10 +102,10 @@ public class Simulator{
                         list.peek().go(blankcar);                   
                     }
                 }
+    globalTimer.tick(tickTime + incGlobalTime);
 
             }
-            globalTimer.tick(tickTime + incGlobalTime);
-            //System.out.println();
+                    //System.out.println();
 
         }            
 
