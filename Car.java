@@ -21,9 +21,9 @@ public class Car {
         motion = true;
         onSensor = false;
         this.lane = lane;
+        real = true;
         if (real) System.out.println("The car approaches the "
                 + lane.getTag() + " lane of the intersection.");
-        real = true;
     }
 
     /**
