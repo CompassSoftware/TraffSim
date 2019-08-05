@@ -53,7 +53,7 @@ public class CarList {
         return list;
     }
 
-    public void setList(ArrayList list) {
+    public void setList(ArrayList<Car> list) {
         this.list = list;
     }
 

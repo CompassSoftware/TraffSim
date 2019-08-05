@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.lang.Thread;
 /**
  * Controller Class.
  * 
@@ -11,7 +12,7 @@ import java.util.Arrays;
  * 
  * 07/21/2019
  */
-public class Controller{
+public class Controller extends Thread{
     public static final int MINTIME = 2;
     public static final int MAXTIME = 12;
 
@@ -164,8 +165,20 @@ public class Controller{
             maxTimer.setTime(MAXTIME + 1);
 
         }
-        minTimer.tick(1);
-        maxTimer.tick(1);
+
+        try
+        {
+
+            minTimer.tick(1);
+            maxTimer.tick(1);
+            Thread.sleep(1000);
+
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+
         return incGlobalTime;
     }
 
