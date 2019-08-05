@@ -41,7 +41,6 @@ public class Controller{
      * A method to find which lanes currently have a car on their 
      * sensor. Sets lanesWithCar to the lanes that have a car in them.
      *
-     * @return an int array of lanes with a car in them.
      */
     public void lanesWithCar(){
         for (int i = 0; i < lanes.length; i++){
