@@ -36,12 +36,15 @@ public class CarList {
     }
 
     public Car remove(int i){
-    Car car = list.get(i);
-    list.remove(i);
-    return car;
+    	Car car = list.get(i);
+    	list.remove(i);
+    	return car;
     }
 
     public void add(Car c) {
+    	if (list.isEmpty()) {
+    		c.setSensor(true);
+    	}
         list.add(c);
     }
 
@@ -49,11 +52,11 @@ public class CarList {
         return list.get(i);
     }
 
-    public ArrayList getList() {
+    public ArrayList<Car> getList() {
         return list;
     }
 
-    public void setList(ArrayList list) {
+    public void setList(ArrayList<Car> list) {
         this.list = list;
     }
 

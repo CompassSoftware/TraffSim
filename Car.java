@@ -55,9 +55,6 @@ public class Car {
             }
             lane.list.remove();
         }
-        else if (carspot < lane.list.size()){
-                lane.list.remove(carspot);
-        }
     }
 
     /**

@@ -120,13 +120,15 @@ public class Controller{
             for (Lane l : lanes)
                 if (lanes[laneToSend].getTag() == l.getTag()
                         || lanes[laneToSend].getOppTag() == l.getTag()) l.setLight('G');
+            //new line
+            //incGlobalTime++;
             System.out.println("Lights notified to change");
             printLights();
             minTimer.setTime(MINTIME + 1);
             maxTimer.setTime(MAXTIME + 1);
         }
 
-        if (maxTimer.getTime() <= 2){
+        if (maxTimer.getTime() <= 2) {
             incGlobalTime++;
             for (Lane l : lanes){
                 if (l.getLight() == 'G'){

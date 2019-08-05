@@ -53,15 +53,6 @@ public class Simulator{
          * all the scenarios.
          */
 
-        Car nonWestCar = new Car(lanes[1]); // into CarList
-        Car nonSouthCar = new Car(lanes[2]);
-
-        nonWestCar.setReal(false);
-        nonSouthCar.setReal(false);
-
-        // puts empty cars into each lane
-        for(int i = 0; i < 4; i++) lanes[1].addCar(nonWestCar);
-        for(int i = 0; i < 4; i++) lanes[2].addCar(nonSouthCar);
 
         Car eastCar = new Car(lanes[3]);
         Car northCar = new Car(lanes[0]);
@@ -117,6 +108,14 @@ public class Simulator{
                 intersectControl.printLights();
                 incGlobalTime = intersectControl.sendCar(laneToSend, clock);
                 globalTimer.tick(tickTime + incGlobalTime);
+                if (!lanes[3].list.isEmpty()) {
+                	 eastCar.go(0);
+                }
+                
+                if (!lanes[0].list.isEmpty()) {
+                    northCar.go(0);
+                }
+               
                 //System.out.println();
             }
         }
