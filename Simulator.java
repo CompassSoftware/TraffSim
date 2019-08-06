@@ -9,7 +9,7 @@ public class Simulator{
         do {
             do {
                 System.out.println("run - No Car sim");
-                System.out.println("run1 - Eastbound Car (issue 1)");
+                System.out.println("run1 - Issue 2&3");
                 System.out.println("help - Print again");
                 System.out.println("quit - Exits program");
                 System.out.print("\nInput Needed: ");
@@ -30,9 +30,9 @@ public class Simulator{
         } while(str.compareTo("quit") != 0);
     }
 
-
+    
     public static void run1(String [] args){
-        System.out.println("\t\t***This is a Simulation of an Eastbound Car moving into a 4-way intersection***");
+        System.out.println("\t\t***This is a Simulation of #2 & #3***");
         //Set up all lanes and controller, north and south lanes start as green
 
         Lane[] lanes = new Lane[4];
