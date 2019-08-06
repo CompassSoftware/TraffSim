@@ -51,7 +51,8 @@ public class CarTest {
         lane.setLight('G');
         car = new Car(lane);
         car.go(0);
-        assertEquals("The car leaves the " + car.getTag() + " intersection.\n" , out.toString());
+        assertEquals("The car approaches the " + lane.getTag() + " lane of the intersection.\n"
+        		+ "The car leaves the " + car.getTag() + " intersection.\n" , out.toString());
     }
 
     @Test

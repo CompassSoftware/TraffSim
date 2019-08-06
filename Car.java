@@ -22,8 +22,8 @@ public class Car {
         onSensor = false;
         this.lane = lane;
         real = true;
-        if (real) System.out.println("The car approaches the "
-                + lane.getTag() + " lane of the intersection.");
+        if (real) System.out.print("The car approaches the "
+                + lane.getTag() + " lane of the intersection.\n");
     }
 
     /**
@@ -50,8 +50,8 @@ public class Car {
         if (lane.getLight() == 'G' || lane.getLight() == 'Y') {
 
             if (real){
-            System.out.println("The car leaves the " 
-                    + lane.getTag()  + " intersection.");
+            System.out.print("The car leaves the " 
+                    + lane.getTag()  + " intersection.\n");
             }
             lane.list.remove();
         }
