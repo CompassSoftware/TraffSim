@@ -61,7 +61,7 @@ public class Simulator{
 
         Controller intersectControl = new Controller(lanes);
         Clock clock = new Clock();       
-        Timer globalTimer = new Timer(5);
+        Timer globalTimer = new Timer(10);
         int tickTime = 1;
         int[] lanesWithCar;
         System.out.print("[" + clock.toString() + "] ");
@@ -69,6 +69,7 @@ public class Simulator{
         int incGlobalTime = 0;
         //globaltimer to stop program, otherwise runs regardless of the amount of cars remaining
 
+        System.out.print("[" + clock.toString() + "] ");
         intersectControl.lanesWithCar();
         lanesWithCar = intersectControl.getLane();
 
@@ -101,7 +102,7 @@ public class Simulator{
 
         } */       
         
-        while(globalTimer.getTime() > 0){
+        while(globalTimer.getTime() - 1 > 0){
             for (int laneToSend : lanesWithCar){
                 clock.setSeconds(tickTime);
                 System.out.print("[" + clock.toString() + "]");
