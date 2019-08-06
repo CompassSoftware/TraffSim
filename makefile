@@ -27,6 +27,10 @@ run:
 	make 
 	java Simulator
 
+begin:
+	make compile
+	make run
+
 customchk: *.java style.xml
 	java $(CKSTYLE_COMMAND) -c style.xml *.java
 

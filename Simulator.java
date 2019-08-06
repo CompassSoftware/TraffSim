@@ -9,7 +9,7 @@ public class Simulator{
         do {
             do {
                 System.out.println("run - No Car sim");
-                System.out.println("run1 - Eastbound Car (issue 1)");
+                System.out.println("run1 - Issue 2&3");
                 System.out.println("help - Print again");
                 System.out.println("quit - Exits program");
                 System.out.print("\nInput Needed: ");
@@ -30,9 +30,9 @@ public class Simulator{
         } while(str.compareTo("quit") != 0);
     }
 
-
+    
     public static void run1(String [] args){
-        System.out.println("\t\t***This is a Simulation of an Eastbound Car moving into a 4-way intersection***");
+        System.out.println("\t\t***This is a Simulation of #2 & #3***");
         //Set up all lanes and controller, north and south lanes start as green
 
         Lane[] lanes = new Lane[4];
@@ -42,7 +42,7 @@ public class Simulator{
         lanes[1].setTag('W');
         lanes[2].setTag('S');
         lanes[3].setTag('E');
-        Controller intersectControl = new Controller(lanes);
+
         lanes[0].setLight('G');
         lanes[2].setLight('G');
 
@@ -53,29 +53,15 @@ public class Simulator{
          * all the scenarios.
          */
 
-        Car nonEastCar = new Car(lanes[3]); // creates empty car objects to be inserted
-        Car nonWestCar = new Car(lanes[1]); // into CarList
-        Car nonSouthCar = new Car(lanes[2]);
-        Car nonNorthCar = new Car(lanes[0]);
-
-        nonEastCar.setReal(false); // makes all non cars not real
-        nonWestCar.setReal(false);
-        nonSouthCar.setReal(false);
-        nonNorthCar.setReal(false);
-
-        for(int i = 0; i < 4; i++) lanes[0].addCar(nonNorthCar); // puts 4 empty cars into each lane
-        for(int i = 0; i < 4; i++) lanes[1].addCar(nonWestCar);
-        for(int i = 0; i < 4; i++) lanes[2].addCar(nonSouthCar);
-        for(int i = 0; i < 4; i++) lanes[3].addCar(nonEastCar);
 
         Car eastCar = new Car(lanes[3]);
         Car northCar = new Car(lanes[0]);
         lanes[3].addCar(eastCar);           
         lanes[0].addCar(northCar);
 
-
+        Controller intersectControl = new Controller(lanes);
         Clock clock = new Clock();       
-        Timer globalTimer = new Timer(35);
+        Timer globalTimer = new Timer(10);
         int tickTime = 1;
         int[] lanesWithCar;
         System.out.print("[" + clock.toString() + "] ");
@@ -83,29 +69,63 @@ public class Simulator{
         int incGlobalTime = 0;
         //globaltimer to stop program, otherwise runs regardless of the amount of cars remaining
 
-        lanesWithCar = intersectControl.lanesWithCar();
+        System.out.print("[" + clock.toString() + "] ");
+        intersectControl.lanesWithCar();
+        lanesWithCar = intersectControl.getLane();
 
-        while(globalTimer.getTime() > 0){
+        /**while(globalTimer.getTime() > 0){
+
+            for (int laneToSend : lanesWithCar){
+                clock.setSeconds(tickTime);
+                System.out.print("[" + clock.toString() + "]");
+                intersectControl.printLights();
+                
+                incGlobalTime = intersectControl.sendCar(laneToSend, clock);
+
+                /*Looks at every lane with size > 0
+                int[] lanesNotEmpty = intersectControl.lanesNotEmpty();
+                for (int currlane : lanesNotEmpty){
+                    if (currlane != -1){
+
+                        CarList list = lanes[currlane].list;
+                        int blankcar = 0;
+                        for(blankcar = 0; blankcar < list.size() && list.get(blankcar).getReal(); blankcar++);
+
+                        //logic in car.go should handle every permutation for this call
+                        list.peek().go(blankcar);                   
+                    }
+                }
+                	globalTimer.tick(tickTime + incGlobalTime);
+
+            }
+                    //System.out.println();
+
+        } */       
+        
+        while(globalTimer.getTime() - 1 > 0){
             for (int laneToSend : lanesWithCar){
                 clock.setSeconds(tickTime);
                 System.out.print("[" + clock.toString() + "]");
                 intersectControl.printLights();
                 incGlobalTime = intersectControl.sendCar(laneToSend, clock);
-
-                    //Finds the first blank space in the lane, calls go to
-                    //move the cars up to it
-                    int carspot = 0;
-                    for(carspot; carspot < laneToSend.list.size() 
-                        && laneToSend.list.get(carspot).getReal(); carspot++)
-                    
-                    
-                    if(carspot > laneToSend.list.size()) eastCar.go();  
                 globalTimer.tick(tickTime + incGlobalTime);
+                if (!lanes[3].list.isEmpty()) {
+                	 eastCar.go(0);
+                }
+                
+                if (!lanes[0].list.isEmpty()) {
+                    northCar.go(0);
+                }
+               
                 //System.out.println();
             }
-            System.out.println("No more cars on intersection");
-            System.out.println("\t\t***Simulation Concluded***");
         }
+
+
+
+
+        //System.out.println("No more cars on intersection");
+        System.out.println("\t\t***Simulation Concluded***");
     }
 
     public static void run (String[] args){
@@ -161,7 +181,8 @@ public class Simulator{
         int incGlobalTime = 0;
         //globaltimer to stop program, otherwise runs regardless of the amount of cars remaining
 
-        lanesWithCar = intersectControl.lanesWithCar();
+        intersectControl.lanesWithCar();
+        lanesWithCar = intersectControl.getLane();
 
         while(globalTimer.getTime() > 0){
             for (int laneToSend : lanesWithCar){
@@ -176,6 +197,3 @@ public class Simulator{
         System.out.println("\t\t***Simulation Concluded***");
     }
 }
-
-
-

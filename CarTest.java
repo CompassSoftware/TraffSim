@@ -50,7 +50,7 @@ public class CarTest {
     {
         lane.setLight('G');
         car = new Car(lane);
-        car.go();
+        car.go(0);
         assertEquals("The car leaves the " + car.getTag() + " intersection.\n" , out.toString());
     }
 

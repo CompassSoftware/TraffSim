@@ -12,7 +12,7 @@ import java.util.Arrays;
  * 07/21/2019
  */
 public class Controller{
-    public static final int MINTIME = 2;
+    public static final int MINTIME = 5;
     public static final int MAXTIME = 12;
 
 
@@ -41,12 +41,12 @@ public class Controller{
      * A method to find which lanes currently have a car on their 
      * sensor. Sets lanesWithCar to the lanes that have a car in them.
      *
-     * @return an int array of lanes with a car in them.
      */
-    public int[] lanesWithCar(){
+    public void lanesWithCar(){
         for (int i = 0; i < lanes.length; i++){
-            if (lanes[i].list.size() > 0 && lanes[i].list.peek().getReal())
-                if (lanes[i].carOnSensor()){ // if a car is on a sensor, add it to the set of lanes with with cars at light.
+            if (lanes[i].list.size() > 0){
+                // if a car is on a sensor, add it to the set of lanes with with cars at light.
+                if (lanes[i].carOnSensor()){ 
                     System.out.println("Controller notified that " + lanes[i].getTag() + " lane has a sensor that has been set off");
 
                     int j = 0;
@@ -56,8 +56,24 @@ public class Controller{
                     }
                     laneWithCar[j] = i;
                 }
+
+            }
         }
-        return laneWithCar;
+    }
+
+    public int[] lanesNotEmpty(){
+        int[] lanesNotEmpty = new int[lanes.length];
+        Arrays.fill(lanesNotEmpty, -1);
+        for(int i = 0; i < lanes.length; i++){
+            if (lanes[i].list.size() > 0){
+                int j = 0;
+                for (j = 0; j < lanesNotEmpty.length && lanesNotEmpty[j] != -1; j++);
+
+                    lanesNotEmpty[j] = i;
+            }
+
+        }
+        return lanesNotEmpty;
     }
 
     /*
@@ -67,6 +83,7 @@ public class Controller{
      * @param laneToSend Lane that needs to be sent by changing light to green.
      */
     public int sendCar(int laneToSend, Clock clock) {
+
         boolean changed = false;
         Lane redLane = lanes[0];
         int incGlobalTime = 0;
@@ -80,6 +97,8 @@ public class Controller{
                 }
 
                 if (changed) {
+                	clock.setSeconds(1);
+                    incGlobalTime++;
                     System.out.println("Lights notified to change");
                     printLights();
                 }
@@ -87,6 +106,9 @@ public class Controller{
                 for (Lane l : lanes)
                     if (l.getLight() == 'Y') l.setLight('R');
                 if (changed){
+
+                	clock.setSeconds(1);
+                    incGlobalTime++;
                     System.out.println("Lights notified to change");
                     printLights();
 
@@ -97,13 +119,15 @@ public class Controller{
             for (Lane l : lanes)
                 if (lanes[laneToSend].getTag() == l.getTag()
                         || lanes[laneToSend].getOppTag() == l.getTag()) l.setLight('G');
-
+            //new line
+            //incGlobalTime++;
             System.out.println("Lights notified to change");
             printLights();
-            minTimer.setTime(MINTIME);
-            maxTimer.setTime(MAXTIME);
+            minTimer.setTime(MINTIME + 1);
+            maxTimer.setTime(MAXTIME + 1);
         }
-        if (maxTimer.getTime() <= 2){
+
+        if (maxTimer.getTime() <= 2) {
             incGlobalTime++;
             for (Lane l : lanes){
                 if (l.getLight() == 'G'){
@@ -114,7 +138,7 @@ public class Controller{
             }
             if (changed) {
                 clock.setSeconds(1);
-                incGlobalTime++;    
+                incGlobalTime++;                
                 System.out.print("[" + clock.toString() + "]");
                 System.out.println("Lights notified to change");
                 printLights();
@@ -155,6 +179,10 @@ public class Controller{
             System.out.print("\t" + l.getTag() + " " + l.printLight());
         }
         System.out.println();
+    }
+
+    public int[] getLane() {
+        return laneWithCar;
     }
 }
 

@@ -57,6 +57,10 @@ public class Lane {
      */
     public void removeCar() {
         list.remove();
+        //maybe remove this
+        if (list.isEmpty()) {
+        	car = false;
+        }
     }
     
     /**
