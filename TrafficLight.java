@@ -66,6 +66,7 @@ public class TrafficLight {
      * @param color char of color to set light to
      */
     public void setColor(char color) {
+
         switch(color) {
             case 'G':
             case 'g':

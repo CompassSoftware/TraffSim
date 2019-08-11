@@ -1,3 +1,6 @@
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
 /**
  * 
  * Car Class.
@@ -11,32 +14,45 @@ public class Car {
     private boolean onSensor;
     private Lane lane;
     private boolean real;
-
+    private String file = "out.txt";
+    private PrintWriter out;
     /**
      *  Car constructor takes a lane object and returns a car object.
      *
      *  @param lane - Lane object where the car approaches
      */
     public Car(Lane lane) {
+        try {
+            out = new PrintWriter(file);
         motion = true;
         onSensor = false;
         this.lane = lane;
         real = true;
-        if (real) System.out.println("The car approaches the "
+        if (real) out.println("The car approaches the "
                 + lane.getTag() + " lane of the intersection.");
+        out.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
      *  Stop orders the car to stop moving and prints where it stops.
      */
     public void stop() {
+        try {
+            out = new PrintWriter(file);
         if (lane.getLight() != 'G') {
             setMotion(false);
             setSensor(true);
-            System.out.print("The car has stopped at the " 
+            out.print("The car has stopped at the " 
                     + lane.getTag() + " intersection. ");
-            System.out.print("The " + lane.getTag() 
+           out.print("The " + lane.getTag() 
                     + " Sensor has been notified\n");
+        }
+        out.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
@@ -47,16 +63,24 @@ public class Car {
     public void go(int carspot) {
             setMotion(true);
             setSensor(false);
+
+            try {
+                out = new PrintWriter(file);
         if (lane.getLight() == 'G' || lane.getLight() == 'Y') {
 
             if (real){
-            System.out.println("The car leaves the " 
+            out.println("The car leaves the " 
                     + lane.getTag()  + " intersection.");
             }
             lane.list.remove();
         }
         else if (carspot < lane.list.size()){
                 lane.list.remove(carspot);
+        }
+
+        out.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
